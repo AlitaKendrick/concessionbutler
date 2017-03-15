@@ -6,3 +6,7 @@
     messagingSenderId: "268811474889"
   };
   firebase.initializeApp(config);
+
+window.onbeforeunload = function() {
+	return 'You will lose any unsaved changes you may have made';
+}
