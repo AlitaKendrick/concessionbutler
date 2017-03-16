@@ -9,6 +9,7 @@
 firebase.initializeApp(config);
 
 var server = null;
+var total = 0;
 var database = firebase.database();
 
 var menu = [
@@ -91,6 +92,13 @@ $(document).on('click', '#submitOrder', function() {
 	        status: "active",
 	        dateAdded: firebase.database.ServerValue.TIMESTAMP
 	});
+
+});
+
+//Menu button click
+$(document).on('click', '.menuBtn', function() {
+	var item = $(this).attr("alt")
+	console.log(item);
 
 });
 
