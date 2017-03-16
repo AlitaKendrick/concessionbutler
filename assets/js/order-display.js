@@ -21,7 +21,10 @@
 
     });
 
-database.ref().orderByChild('status').equalTo('active').on('child_added', function(snapshot) {
+database.ref().orderByChild('status').equalTo('active').on('value', function(snapshot) {
 	console.log(snapshot.val());
+  console.log(snapshot.val().Object.keys());
+
 
 });
+
