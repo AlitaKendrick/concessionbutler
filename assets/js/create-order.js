@@ -10,3 +10,14 @@
 window.onbeforeunload = function() {
 	return 'You will lose any unsaved changes you may have made';
 }
+
+var menu = [
+	{
+		name: "",
+		price: ,
+		pic: "",
+	}
+
+
+
+]
