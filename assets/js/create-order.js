@@ -69,6 +69,8 @@ $(document).on('click', '#setServer', function() {
 		
 		//hide current visible window
 		$('.serverSelection').remove();
+		$('.menuItems').show();
+		$('.currentOrder').show();
 	}
 	
 	else{
