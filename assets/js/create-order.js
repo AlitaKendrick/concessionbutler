@@ -14,7 +14,7 @@ var server = null;
 var menu = [
 	{
 		name: "",
-		price: ,
+		price: 0,
 		pic: "",
 	}
 
@@ -49,4 +49,3 @@ $(document).on('click', '#setServer', function() {
 	    	
 });
 
->>>>>>> 2c2d7da4ca67108dc4ff5b9399648edf4728f9f8
