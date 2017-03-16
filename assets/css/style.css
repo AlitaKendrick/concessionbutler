@@ -2,17 +2,18 @@ body {
  
 }
 
-
-/*.container {
-	width: 1000px;
-	height 1000px;
-}*/
-
-
+/*cook page border for menu*/
 .borderbox {
-/*	border-width: 10px;
-	border-style: solid;*/
 	border: 10px solid blue; 
-	/*height: 250px;*/
 	min-height: 50%;
+}
+
+
+/*hides server selector drop down upon 'submit'*/
+.serverSelection {
+	height: 100vh;
+}
+
+.moneyUnderline {
+	text-decoration: underline;
 }
