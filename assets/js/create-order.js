@@ -96,13 +96,16 @@ $(document).on('click', '.menuBtn', function() {
 	console.log(item);
 	console.log(menu[item].price);
 
-	// $('#currentOrder > tbody:last-child').append(
- //            '<tr>'// need to change closing tag to an opening `<tr>` tag.
- //            +'<td><button class="rmvBtn">X</button</td>'
- //            +'<td>'+item+'</td>'
- //            +'<td>'+cost+'</td>'
- //            +'<td><button id="loeschen">löschen</button></td>'
- //            +'</tr>');
+	$('#menu-item > tbody:last-child').append(
+            '<tr>'// need to change closing tag to an opening `<tr>` tag.
+            +'<td><button class="rmvBtn">X</button</td>'
+            +'<td>'+item+'</td>'
+            +'<td>'+menu[item].price+'</td>'
+            +'</tr>'
+     );
+	total = (total + menu[item].price);
+	$('.moneyUnderline').html("$" + total);
+	console.log(total);
 
 });
 
