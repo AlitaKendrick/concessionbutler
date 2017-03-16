@@ -23,9 +23,9 @@ var menu = [
 ]
 
 
-window.onbeforeunload = function() {
-	return 'You will lose any unsaved changes you may have made';
-}
+//window.onbeforeunload = function() {
+//	return 'You will lose any unsaved changes you may have made';
+//}
 
 
 $(document).on('click', '#setServer', function() {
