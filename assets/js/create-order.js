@@ -10,11 +10,7 @@ firebase.initializeApp(config);
 
 var server = null;
 
-window.onbeforeunload = function() {
-	return 'You will lose any unsaved changes you may have made';
-}
 
-<<<<<<< HEAD
 var menu = [
 	{
 		name: "",
@@ -25,7 +21,13 @@ var menu = [
 
 
 ]
-=======
+
+
+window.onbeforeunload = function() {
+	return 'You will lose any unsaved changes you may have made';
+}
+
+
 $(document).on('click', '#setServer', function() {
 
 	event.preventDefault();
