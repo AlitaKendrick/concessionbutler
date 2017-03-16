@@ -6,3 +6,17 @@
     messagingSenderId: "268811474889"
   };
   firebase.initializeApp(config);
+
+  var database = firebase.database();
+
+
+  database.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function(snapshot) {
+
+
+  	alert((snapshot.val().order) + (snapshot.val().server) + (snapshot.val().status) + (snapshot.val().dateAdded));
+     /*console.log(snapshot.val().order);
+     console.log(snapshot.val().server);
+     console.log(snapshot.val().status);
+     console.log(snapshot.val().dateAdded); */
+
+    });
