@@ -109,6 +109,15 @@ $(document).on('click', '.menuBtn', function() {
 
 });
 
+//List button remove click
+$(document).on('click', '.rmvBtn', function() {
+	 var rmvTotal = $(this).parent().siblings().eq(1)[0].innerText;
+	 total = (total - rmvTotal);
+	 $('.moneyUnderline').html("$" + total);
+	 $(this).parent().parent().remove();
+});
+
+
 
 /*
 Testing
