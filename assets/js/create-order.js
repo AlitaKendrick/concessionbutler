@@ -12,44 +12,39 @@ var server = null;
 var total = 0;
 var database = firebase.database();
 
-var menu = [
-	{
-		name: "burger",
+var menu = {
+	
+	burger: {
 		price: 4,
 		pic: "assets/images/burgerIcon.png",
 	}, 
 
-	{
-		name: "drink",
+	drink: {
 		price: 1,
 		pic: "assets/images/drinkIcon.png",
 	}, 
 
-	{
-		name: "watermelon",
+	watermelon: {
 		price: 2,
 		pic: "assets/images/watermelonIcon.png",
 	}, 
 
-	{
-		name: "fries",
+	fries: {
 		price: 2,
 		pic: "assets/images/friesIcon.png",
 	}, 
 
-	{
-		name: "donut",
+	donut: {
 		price: 1,
 		pic: "assets/images/donutIcon.png",
 	}, 
 
-	{
-		name: "beer",
+	beer: {
 		price: 6,
 		pic: "assets/images/beerIcon.png",
 	}, 
 
-]
+}
 
 
 //window.onbeforeunload = function() {
@@ -99,6 +94,15 @@ $(document).on('click', '#submitOrder', function() {
 $(document).on('click', '.menuBtn', function() {
 	var item = $(this).attr("alt")
 	console.log(item);
+	console.log(menu[item].price);
+
+	// $('#currentOrder > tbody:last-child').append(
+ //            '<tr>'// need to change closing tag to an opening `<tr>` tag.
+ //            +'<td><button class="rmvBtn">X</button</td>'
+ //            +'<td>'+item+'</td>'
+ //            +'<td>'+cost+'</td>'
+ //            +'<td><button id="loeschen">löschen</button></td>'
+ //            +'</tr>');
 
 });
 
