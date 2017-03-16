@@ -13,31 +13,37 @@ var server = null;
 
 var menu = [
 	{
-		name: "",
+		name: "burger",
 		price: ,
 		pic: "assets/images/burgerIcon.png",
 	}, 
 
 	{
-		name: "",
+		name: "drink",
 		price: ,
 		pic: "assets/images/drinkIcon.png",
 	}, 
 
 	{
-		name: "",
+		name: "watermelon",
+		price: ,
+		pic: "assets/images/watermelonIcon.png",
+	}, 
+
+	{
+		name: "fries",
 		price: ,
 		pic: "assets/images/friesIcon.png",
 	}, 
 
 	{
-		name: "",
+		name: "donut",
 		price: ,
 		pic: "assets/images/donutIcon.png",
 	}, 
 
 	{
-		name: "",
+		name: "beer",
 		price: ,
 		pic: "assets/images/beerIcon.png",
 	}, 
@@ -71,4 +77,3 @@ $(document).on('click', '#setServer', function() {
 	    	
 });
 
->>>>>>> 2c2d7da4ca67108dc4ff5b9399648edf4728f9f8
