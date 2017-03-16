@@ -80,7 +80,7 @@ $(document).on('click', '#setServer', function() {
 });
 
 //Actual submit
-$(document).on('click', '#setServer', function() {
+$(document).on('click', '#submitOrder', function() {
 	
 	database.ref().push({
 
