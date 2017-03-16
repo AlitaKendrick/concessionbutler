@@ -14,37 +14,37 @@ var database = firebase.database();
 var menu = [
 	{
 		name: "burger",
-		price: ,
+		price: 4,
 		pic: "assets/images/burgerIcon.png",
 	}, 
 
 	{
 		name: "drink",
-		price: ,
+		price: 1,
 		pic: "assets/images/drinkIcon.png",
 	}, 
 
 	{
 		name: "watermelon",
-		price: ,
+		price: 2,
 		pic: "assets/images/watermelonIcon.png",
 	}, 
 
 	{
 		name: "fries",
-		price: ,
+		price: 2,
 		pic: "assets/images/friesIcon.png",
 	}, 
 
 	{
 		name: "donut",
-		price: ,
+		price: 1,
 		pic: "assets/images/donutIcon.png",
 	}, 
 
 	{
 		name: "beer",
-		price: ,
+		price: 6,
 		pic: "assets/images/beerIcon.png",
 	}, 
 
