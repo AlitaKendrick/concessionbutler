@@ -15,10 +15,32 @@ var menu = [
 	{
 		name: "",
 		price: ,
-		pic: "",
-	}
+		pic: "assets/images/burgerIcon.png",
+	}, 
 
+	{
+		name: "",
+		price: ,
+		pic: "assets/images/drinkIcon.png",
+	}, 
 
+	{
+		name: "",
+		price: ,
+		pic: "assets/images/friesIcon.png",
+	}, 
+
+	{
+		name: "",
+		price: ,
+		pic: "assets/images/donutIcon.png",
+	}, 
+
+	{
+		name: "",
+		price: ,
+		pic: "assets/images/beerIcon.png",
+	}, 
 
 ]
 
