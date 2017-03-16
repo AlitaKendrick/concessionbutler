@@ -20,3 +20,8 @@
      console.log(snapshot.val().dateAdded); */
 
     });
+
+database.ref().orderByChild('status').equalTo('active').on('child_added', function(snapshot) {
+	console.log(snapshot.val());
+
+});
