@@ -125,7 +125,7 @@ Testing
 
 function pushToDb(){
 	
-	database.ref().push({
+	database.ref().child('orders').child(moment().format("M[-]D[-]YY")).push({
 
 	        order: "order",
 	        server: server,
