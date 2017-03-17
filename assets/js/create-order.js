@@ -11,40 +11,70 @@ firebase.initializeApp(config);
 var server = null;
 var total = 0;
 var database = firebase.database();
+var servers = [];
+var menuItems = [];
+var order = []
+var hideRow;
 
-var menu = {
-	
-	burger: {
-		price: 4,
-		pic: "assets/images/burgerIcon.png",
-	}, 
+var get = {
 
-	drink: {
-		price: 1,
-		pic: "assets/images/drinkIcon.png",
-	}, 
+	servers: function(){
+		
+		var getServers = database.ref('servers');
 
-	watermelon: {
-		price: 2,
-		pic: "assets/images/watermelonIcon.png",
-	}, 
+		getServers.on('value', function(snapshot) {
+			snapshot.forEach(function(childSnapshot) {
+			    var childData = childSnapshot.val();
+			    console.log(childData);
+			    servers.push(childData);
+			});
 
-	fries: {
-		price: 2,
-		pic: "assets/images/friesIcon.png",
-	}, 
+		    $.each(servers, function(val, text) {
+	    		$('#server').append(
+	        		$('<option></option>').html(text)
+			    );
+			});
+		});
+	},
+	menu: function(){
+		var getMenu = database.ref('menu');
 
-	donut: {
-		price: 1,
-		pic: "assets/images/donutIcon.png",
-	}, 
+		getMenu.on('value', function(snapshot) {
+			snapshot.forEach(function(childSnapshot) {
+			    var childData = childSnapshot.val();
+			    console.log(childData);
+			    menuItems.push(childData);
+			});
 
-	beer: {
-		price: 6,
-		pic: "assets/images/beerIcon.png",
-	}, 
+		    for ( var i=0; i<menuItems.length;i++){
+		    	console.log(menuItems[i].name);
+		    	
+		    	var image = $('<img />', { 
+				 src: menuItems[i].pic,
+				 alt: menuItems[i].name,
+				 class: 'menuBtn',
+				 'data-id': [i]
 
+				});
+
+		    	var div = $('<div >',{
+  				 id: menuItems[i].name,
+  				 class: 'menuBtns col-md-2',
+  				 html: '<center><strong>$ ' + menuItems[i].price + '</strong></center>'
+				});
+
+				image.appendTo(div);
+
+				div.appendTo('#menu');
+
+		    }
+		});
+	}
 }
+
+
+get.servers();
+get.menu();
 
 
 //window.onbeforeunload = function() {
@@ -92,19 +122,20 @@ $(document).on('click', '#submitOrder', function() {
 
 //Menu button click
 $(document).on('click', '.menuBtn', function() {
-	var item = $(this).attr("alt")
+	var item = $(this).attr("data-id")
 	console.log(item);
-	console.log(menu[item].price);
+	console.log(menuItems[item].price);
 
 	$('#menu-item > tbody:last-child').append(
             '<tr>'// need to change closing tag to an opening `<tr>` tag.
             +'<td><button class="rmvBtn">X</button</td>'
-            +'<td>'+item+'</td>'
-            +'<td>'+menu[item].price+'</td>'
+            +'<td>'+menuItems[item].name+'</td>'
+            +'<td>'+menuItems[item].price+'</td>'
             +'</tr>'
      );
-	total = (total + menu[item].price);
+	total = (total + menuItems[item].price);
 	$('.moneyUnderline').html("$" + total);
+	order.push(menuItems[item].name);
 	console.log(total);
 
 });
@@ -115,6 +146,17 @@ $(document).on('click', '.rmvBtn', function() {
 	 total = (total - rmvTotal);
 	 $('.moneyUnderline').html("$" + total);
 	 $(this).parent().parent().remove();
+
+	 // var rmvItem = $(this).parent().siblings().eq(0)[0].innerText;
+	 // var row = $("#menu-item tr:contains("+ rmvItem +")");
+	 // var index = row.index('#menu-item tr')
+	 // order.splice(index-1);
+	 // console.log($(this).parent().children().index($(this).parent()));
+	 // console.log($(this).parent().children().index($(this)));
+	 // console.log($(this).parent().index());
+	 console.log($(this).parentsUntil( $( "<tbody>" )));
+
+	
 });
 
 
@@ -122,6 +164,26 @@ $(document).on('click', '.rmvBtn', function() {
 /*
 Testing
 */
+
+var timeoutId = 0;
+
+$(document).on('mousedown', 'td', function() {
+	hideRow = $(this).parent()
+    timeoutId = setTimeout(pressHold, 2000);
+		}).on('mouseup mouseleave', function() {
+   			 clearTimeout(timeoutId);
+});
+
+function pressHold(){
+	var rmvTotal = hideRow.siblings().eq(1)[2];
+	console.log(rmvTotal);
+	//  total = (total - rmvTotal);
+	//  $('.moneyUnderline').html("$" + total);
+	// hideRow.remove();
+
+}
+
+  
 
 function pushToDb(){
 	
