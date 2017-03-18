@@ -152,23 +152,7 @@ $(document).on('click', '.menuBtn', function() {
 	    
 	total = (total + menuItems[item].price);
 	$('.moneyUnderline').html("$" + total);
-
-	order.push(menuItems[item].name);
-	console.log(total);
-
-});
-
-
-
-//List button remove click
-$(document).on('click', '.rmvBtn', function() {
-	 var rmvTotal = $(this).parent().siblings().eq(1)[0].innerText;
-	 total = (total - rmvTotal);
-	 $('.moneyUnderline').html("$" + total);
-	 $(this).parent().parent().remove();
-	console.log($(this).parentsUntil( $( "<tbody>" )));
-
-
+	
 	
 	order.push({ 
 		"name": menuItems[item].name, "price": menuItems[item].price, "id": dataId 
@@ -177,6 +161,8 @@ $(document).on('click', '.rmvBtn', function() {
 	renderTable();
 
 	console.log(JSON.stringify(order));
+
+});
 
 
 $(document).on("click", ".continueBtn", function(){
@@ -189,13 +175,6 @@ $("#myModal").click(function(){
 });
 
 
-
-
-/*
-Testing
-*/
-
-});
 
 //List button remove click
 
