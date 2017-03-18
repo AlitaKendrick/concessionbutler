@@ -20,7 +20,7 @@ var timeoutId = 0; //taphold to remove
 
 var get = {
 
-	servers: function(){
+	servers: function(){. //gets server names from Firbase and fills selection box
 		
 		var getServers = database.ref('servers');
 
@@ -38,7 +38,7 @@ var get = {
 			});
 		});
 	},
-	menu: function(){
+	menu: function(){ //gets menu information from Firbase and generates the menu items
 		var getMenu = database.ref('menu');
 
 		getMenu.on('value', function(snapshot) {
@@ -96,6 +96,25 @@ function calculateTotal(){
 	$('.moneyUnderline').html("$" + total);
 }
 
+function pressHold(){
+	
+	removeRow.remove();
+	console.log("Data ID" + removeID)
+	 order.splice(order.removeID,1);
+
+	for (var i=0; i<order.length;i++){
+		if ([i] === order[i].id) {
+			 order.splice([i],1)
+		}
+	 
+	}
+	renderTable();
+	calculateTotal();
+}
+/*
+Start 
+*/
+
 get.servers();
 get.menu();
 
@@ -107,6 +126,8 @@ get.menu();
 /*
 Clicks
 */
+
+//Set server button
 $(document).on('click', '#setServer', function() {
 
 	event.preventDefault();
@@ -130,20 +151,20 @@ $(document).on('click', '#setServer', function() {
 	
 });
 
-//Actual submit
+//Submit order to Firebase
 $(document).on('click', '#submitOrder', function() {
 	
 	database.ref().push({
 
-	        order: "order",
-	        server: server,
-	        status: "active",
-	        dateAdded: firebase.database.ServerValue.TIMESTAMP
+        order: "order",
+        server: server,
+        status: "active",
+        dateAdded: firebase.database.ServerValue.TIMESTAMP
 	});
 
 });
 
-//Menu button click
+//Menu item button click
 $(document).on('click', '.menuBtn', function() {
 	var item = $(this).attr("data-id")
 	var dataId = (order.length + 1);
@@ -164,6 +185,17 @@ $(document).on('click', '.menuBtn', function() {
 
 });
 
+//List button remove click
+
+$(document).on('mousedown', 'td', function() {
+	removeRow = $(this).parent();
+	removeID  = $(this).parent().attr('data-id');
+	console.log("This is the table data id " + removeID);
+    timeoutId = setTimeout(pressHold, 1000);
+		}).on('mouseup mouseleave', function() {
+   			 clearTimeout(timeoutId);
+});
+
 
 $(document).on("click", ".continueBtn", function(){
 console.log("clicked!!!");
@@ -176,41 +208,9 @@ $("#myModal").click(function(){
 
 
 
-//List button remove click
-
-$(document).on('mousedown', 'td', function() {
-	removeRow = $(this).parent();
-	removeID  = $(this).parent().attr('data-id');
-	console.log("This is the table data id " + removeID);
-    timeoutId = setTimeout(pressHold, 1000);
-		}).on('mouseup mouseleave', function() {
-   			 clearTimeout(timeoutId);
-});
-
-function pressHold(){
-	
-	removeRow.remove();
-	console.log("Data ID" + removeID)
-	 order.splice(order.removeID,1);
-
-	for (var i=0; i<order.length;i++){
-		if ([i] === order[i].id) {
-			 order.splice([i],1)
-		}
-	 
-	}
-	renderTable();
-	calculateTotal();
-}
-
-
-
 /*
 Testing
 */
-
-
-  
 
 function pushToDb(){
 	
