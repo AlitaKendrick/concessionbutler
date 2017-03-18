@@ -20,7 +20,7 @@ var timeoutId = 0; //taphold to remove
 
 var get = {
 
-	servers: function(){. //gets server names from Firbase and fills selection box
+	servers: function(){ //gets server names from Firbase and fills selection box
 		
 		var getServers = database.ref('servers');
 
