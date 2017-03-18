@@ -177,9 +177,7 @@ $(document).on('mousedown', 'td', function() {
 function pressHold(){
 	var rmvTotal = hideRow.siblings().eq(1)[2];
 	console.log(rmvTotal);
-	//  total = (total - rmvTotal);
-	//  $('.moneyUnderline').html("$" + total);
-	// hideRow.remove();
+	
 
 }
 
