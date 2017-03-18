@@ -152,7 +152,7 @@ $(document).on('click', '.menuBtn', function() {
 	    
 	total = (total + menuItems[item].price);
 	$('.moneyUnderline').html("$" + total);
-	// $(".amtDue").append(total);
+
 	order.push(menuItems[item].name);
 	console.log(total);
 
@@ -166,17 +166,9 @@ $(document).on('click', '.rmvBtn', function() {
 	 total = (total - rmvTotal);
 	 $('.moneyUnderline').html("$" + total);
 	 $(this).parent().parent().remove();
+	console.log($(this).parentsUntil( $( "<tbody>" )));
 
-	 // var rmvItem = $(this).parent().siblings().eq(0)[0].innerText;
-	 // var row = $("#menu-item tr:contains("+ rmvItem +")");
-	 // var index = row.index('#menu-item tr')
-	 // order.splice(index-1);
-	 // console.log($(this).parent().children().index($(this).parent()));
-	 // console.log($(this).parent().children().index($(this)));
-	 // console.log($(this).parent().index());
-	 console.log($(this).parentsUntil( $( "<tbody>" )));
 
-	
 	
 	order.push({ 
 		"name": menuItems[item].name, "price": menuItems[item].price, "id": dataId 
