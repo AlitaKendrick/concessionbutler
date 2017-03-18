@@ -1,200 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <link rel="stylesheet" href="assets/css/style.css">
-  
-  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>
-
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-
-	<script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
-
- 	<script src="assets/js/create-order.js"></script>
-  <script src="assets/js/calc.js"></script>
-  
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <title>Concession Butler</title>
-</head>
-<body>
-
-<div class="container-fluid">
-
-<!-- header text -->
-  <div class="row">
-    <h1> Concession Butler </h1>
-  </div>
-
-
-<!-- server login info with dropdown  -->
-	<div class="row serverSelection">
-		<div class="col-md-5">
-			<h1> Server Name </h1>
-		<div class="form-group">
-   			<label for="exampleSelect1">Select your server</label>
-			<select class="form-control" id="server">
-				<option></option>
-    		</select> <br>
-    		<button class="btn btn-default" id="setServer">Submit</button>
-		</div>
-		</div>
-	</div>
-
-
-
-<!-- menu items selection  -->
-	<div class="row menuItems">
-		<div class="col-md-12 menuItems" id="menu">
-			
-    <!-- Menu items will be generated and placed here -->
-
-		</div>
-	</div>
-
-<!-- current order section -->
-	<div class="row currentOrder">
-		
-  <!-- need to create loop to add in menu item info -->
-  	<div class="col-md-12">
-
-   		<div class="panel-body">
-          	<table class="table table-hover" id='menu-item'>
-              <thead>
-              <tr>
-              	<th>Remove</th>
-              	<th>Item Description</th>
-              	<th>Price</th>
-              </tr>
-             	</thead>
-              <tbody>
-              </tbody>
-             	</table>
-          </div>
-  	</div>
-
-
-  	<div class="row totalDue">
-  		<div class="col-md-12">
-  			<h2> Total Due: </h2> 
-  			<h2 class="moneyUnderline"> $0.00 </h2>
-  		</div>
-  	</div>
-
-
-
-  	<div class="row">
-    <div class="col-md-12">
-  	   <div class="options col-md-2">
-  			<button class="btn btn-default cancelBtn">Cancel</button>
-        </div>
-  			<!-- <button class="btn btn-default submitBtn">Submit</button> -->
-
-  <div class="submitOrder col-md-2">
+   <!-- Title -->
+    <title>Concession Butler</title>
+   
+   <!-- Scripts: jQuery, Tether, Bootstrap JS-->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
     
-<!-- Trigger the modal with a button -->
-        <button type="button" class="btn btn-default continueBtn" data-toggle="modal" data-target="#myModal">Continue</button>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
 
-<!-- Modal -->
-      <div id="myModal" class="modal fade" role="dialog">
-      <div class="modal-dialog">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-<!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Payment</h4>
-      </div>
-      <div class="modal-body">
-        <!-- <p> Calculator Stuff </p> -->
+     <!-- Bootstrap Stylesheet-->
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
+    <!--   Main stylesheet -->
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
-    <div class="container">
+  </head>
 
-    <div class="row">
-      <div class="col-md-5">
-        <h1 class="amtDue"> Total Due: $</h1>
-      </div>
-    </div>
+  <body>
 
-    <div class="row">
+    <!-- NAVIGATION W/ HAMBURGER -->
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
 
-      <!-- Calculator Panel -->
-      <div class="col-md-5">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">Calculator</h3>
-          </div>
+        <!-- THIS IS WHAT MAKES THE HAMBURGER EXPAND -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#cb-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
 
-          <div class="panel-body">
-            <button id="button-1" class="btn btn-primary number" value="1"><h1>$1</h1></button>
-            <button id="button-5" class="btn btn-primary number" value="5"><h1>$5</h1></button>
-            <button id="button-10" class="btn btn-primary number" value="10"><h1>$10</h1></button>
-            <br><br>
-            <button id="button-20" class="btn btn-primary number" value="20"><h1>$20</h1></button>
-            <button id="button-50" class="btn btn-primary number" value="50"><h1>$50</h1></button>
-            <button id="button-100" class="btn btn-primary number" value="100"><h1>$100</h1></button>
-            <br><br>
-
-            <button id="button-change1" class="btn btn-primary number" value=".01"><h1>&#162;1</h1></button>
-            <button id="button-change5" class="btn btn-primary number" value=".05"><h1>&#162;5</h1></button>
-            <button id="button-change10" class="btn btn-primary number" value=".10"><h1>&#162;10</h1></button>
-            <button id="button-change25" class="btn btn-primary number" value=".25"><h1>&#162;25</h1></button>
-            <br><br>
-
-            <button id="button-plus" class="btn btn-danger operator" value="plus"><h1>+</h1></button>
-            <button id="button-minus" class="btn btn-danger operator" value="minus"><h1>&minus;</h1></button>
-            <button id="button-equal" class="btn btn-success equal" value="equals"><h1>=</h1></button>
-            <button id="button-clear" class="btn btn-default clear" value="clear"><h1>clear</h1></button>
-          </div>
+          <!-- THIS IS WHERE THE LOGO GOES -->
+          <a class="navbar-brand" href="#">
+            <img alt="Brand" src="assets/images/brandIcon.png">
+          </a>
         </div>
-      </div>
-      </div>
 
-      <!-- Result Panel -->
-      <div class="row">
-      <div class="col-md-5">
-        <div class="panel panel-default">
-          <div class="panel-heading">
+        <!-- LINKS THAT WILL BE COLLAPSED INTO HAMBURGER -->
+        <div class="collapse navbar-collapse" id="cb-navbar-collapse-1">
 
-          </div>
-          <div class="panel-body">
-            <h3 class="amtDue"> Total Due: $</h3>
-            <h3 class="panel-title">Amount Remaining: $ 
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="index.html">Server</a></li>
+            <li><a href="#">Admin</a></li>
+            <li><a href="order-display.html">Cook</a></li>
+          </ul>
 
-            <span id="result"></span> </h3>
-          </div>
-        </div>
-      </div>
-    </div>
-    </div>
-    </div>
-
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default btn-success" data-dismiss="modal">Submit</button>
-      </div>
-      </div>
-      </div>
-      </div>
-
-  </div>
-  </div>
-  </div>
-  </div>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
 
 
 
 
+  <!-- JUMBOTRON BELOW -->
+     
+     
+      <div class="jumbotron">
+          <div class="container-fluid">
+              <h1 class="text-center"> Welcome to Concessions Butler</h1>
+              <h2 class="text-center"> Concessions onClick </h2>
+              
 
+              <div class="row hero">
+                <div class="col-md-12">
 
+                  <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="heroItem">
+                     <img src="assets/images/orderIcon.png" alt="concession">
+                      <div class="caption">
+                        <h3>Easy Order</h3>
+                        <p>Concession Butler's simple interface helps servers quickly take orders and calculate the total amount due for the order. Our intuitive buttons help even the most inexperienced server get the order right every time.</p>
+                      </div> <!-- end caption -->
+                    </div> <!-- end thumbnail -->
+                  </div> <!-- end col -->
 
+                  <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="heroItem">
+                      <img src="assets/images/concessionIcon.png" alt="concession">
+                      <div class="caption">
+                        <h3>Fast Food</h3>
+                        <p>At the click of a button, orders are sent to your concession stand for assembly. Your servers can take orders from multiple customers without stopping to take their order to the concession stand.</p>
+                      </div> <!-- end caption -->
+                    </div> <!-- end thumbnail -->
+                  </div> <!-- end col -->
 
-  </div>
+                  <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="heroItem">
+                      <img src="assets/images/happyIcon.png" alt="concession">
+                      <div class="caption">
+                        <h3>Happy Customers</h3>
+                        <p>Our streamlined system keeps orders moving fast and cuts down the wait time for customers! Concession Butler is the easiest way to maximize your sales and get the most of your teammembers' efforts.</p>
+                      </div> <!-- end caption -->
+                    </div> <!-- end thumbnail -->
+                  </div> <!-- end col -->
+                
 
-</body>
+                  </div> <!-- end col-md-12 -->
+                </div> <!-- end row hero -->
+
+          </div> <!-- end container -->
+      </div> <!-- end jumbotron -->
+         
+  </body>
 </html>
