@@ -135,10 +135,13 @@ $(document).on('click', '.menuBtn', function() {
      );
 	total = (total + menuItems[item].price);
 	$('.moneyUnderline').html("$" + total);
+	$(".amtDue").append(total);
 	order.push(menuItems[item].name);
 	console.log(total);
 
 });
+
+
 
 //List button remove click
 $(document).on('click', '.rmvBtn', function() {
@@ -158,6 +161,19 @@ $(document).on('click', '.rmvBtn', function() {
 
 	
 });
+
+
+
+
+$(document).on("click", ".continueBtn", function(){
+console.log("clicked!!!");
+});
+
+$("#myModal").click(function(){
+    $('#pageopen').modal();
+    
+});
+
 
 
 
