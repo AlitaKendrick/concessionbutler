@@ -13,8 +13,10 @@ var total = 0;
 var database = firebase.database();
 var servers = [];
 var menuItems = [];
-var order = []
-var hideRow;
+var order = [];
+var removeRow;
+var removeId;
+var timeoutId = 0; //taphold to remove
 
 var get = {
 
@@ -72,6 +74,27 @@ var get = {
 	}
 }
 
+function renderTable(){
+	$('#tbody').empty();
+
+	for (var i=0; i<order.length; i++){
+		$('#menu-item > tbody:last-child').append(
+            '<tr data-id='+ [i] +'>'// need to change closing tag to an opening `<tr>` tag.
+            +'<td>'+order[i].name+'</td>'
+            +'</tr>' //TODO HERE MAKE SURE ID EXISTS BEFORE WRITING
+     );
+	}
+	calculateTotal();
+}
+
+function calculateTotal(){
+	total = 0 
+	for (var i=0; i < order.length; i++ ){
+		total = (order[i].price + total)
+	}
+	
+	$('.moneyUnderline').html("$" + total);
+}
 
 get.servers();
 get.menu();
@@ -123,32 +146,51 @@ $(document).on('click', '#submitOrder', function() {
 //Menu button click
 $(document).on('click', '.menuBtn', function() {
 	var item = $(this).attr("data-id")
-	console.log(item);
-	console.log(menuItems[item].price);
-
-	$('#menu-item > tbody:last-child').append(
-            '<tr>'// need to change closing tag to an opening `<tr>` tag.
-            +'<td>'+menuItems[item].name+'</td>'
-            +'</tr>'
-     );
+	var dataId = (order.length + 1);
+		
+	//TODO make sure data-id isn't alreadu used.
+	    
 	total = (total + menuItems[item].price);
 	$('.moneyUnderline').html("$" + total);
-	order.push(menuItems[item].name);
-	console.log(total);
+	
+	
+	order.push({ 
+		"name": menuItems[item].name, "price": menuItems[item].price, "id": dataId 
+		});
+
+	renderTable();
+
+	console.log(JSON.stringify(order));
+
 
 });
 
 //List button remove click
-$(document).on('click', '.rmvBtn', function() {
-	 var rmvTotal = $(this).parent().siblings().eq(1)[0].innerText;
-	 total = (total - rmvTotal);
-	 $('.moneyUnderline').html("$" + total);
-	 $(this).parent().parent().remove();
 
-	 console.log($(this));
-
-	
+$(document).on('mousedown', 'td', function() {
+	removeRow = $(this).parent();
+	removeID  = $(this).parent().attr('data-id');
+	console.log("This is the table data id " + removeID);
+    timeoutId = setTimeout(pressHold, 1000);
+		}).on('mouseup mouseleave', function() {
+   			 clearTimeout(timeoutId);
 });
+
+function pressHold(){
+	
+	removeRow.remove();
+	console.log("Data ID" + removeID)
+	 order.splice(order.removeID,1);
+
+	for (var i=0; i<order.length;i++){
+		if ([i] === order[i].id) {
+			 order.splice([i],1)
+		}
+	 
+	}
+	renderTable();
+	calculateTotal();
+}
 
 
 
@@ -156,22 +198,6 @@ $(document).on('click', '.rmvBtn', function() {
 Testing
 */
 
-var timeoutId = 0;
-
-$(document).on('mousedown', 'td', function() {
-	hideRow = $(this).parent();
-    timeoutId = setTimeout(pressHold, 1000);
-		}).on('mouseup mouseleave', function() {
-   			 clearTimeout(timeoutId);
-});
-
-function pressHold(line){
-	
-	hideRow.remove();
-	
-	
-
-}
 
   
 
@@ -179,7 +205,7 @@ function pushToDb(){
 	
 	database.ref().child('orders').child(moment().format("M[-]D[-]YY")).push({
 
-	        order: "order",
+	        order: order,
 	        server: server,
 	        status: "active",
 	        dateAdded: firebase.database.ServerValue.TIMESTAMP
