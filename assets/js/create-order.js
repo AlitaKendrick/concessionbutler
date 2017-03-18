@@ -128,9 +128,7 @@ $(document).on('click', '.menuBtn', function() {
 
 	$('#menu-item > tbody:last-child').append(
             '<tr>'// need to change closing tag to an opening `<tr>` tag.
-            +'<td><button class="rmvBtn">X</button</td>'
             +'<td>'+menuItems[item].name+'</td>'
-            +'<td>'+menuItems[item].price+'</td>'
             +'</tr>'
      );
 	total = (total + menuItems[item].price);
@@ -147,14 +145,7 @@ $(document).on('click', '.rmvBtn', function() {
 	 $('.moneyUnderline').html("$" + total);
 	 $(this).parent().parent().remove();
 
-	 // var rmvItem = $(this).parent().siblings().eq(0)[0].innerText;
-	 // var row = $("#menu-item tr:contains("+ rmvItem +")");
-	 // var index = row.index('#menu-item tr')
-	 // order.splice(index-1);
-	 // console.log($(this).parent().children().index($(this).parent()));
-	 // console.log($(this).parent().children().index($(this)));
-	 // console.log($(this).parent().index());
-	 console.log($(this).parentsUntil( $( "<tbody>" )));
+	 console.log($(this));
 
 	
 });
@@ -168,15 +159,16 @@ Testing
 var timeoutId = 0;
 
 $(document).on('mousedown', 'td', function() {
-	hideRow = $(this).parent()
-    timeoutId = setTimeout(pressHold, 2000);
+	hideRow = $(this).parent();
+    timeoutId = setTimeout(pressHold, 1000);
 		}).on('mouseup mouseleave', function() {
    			 clearTimeout(timeoutId);
 });
 
-function pressHold(){
-	var rmvTotal = hideRow.siblings().eq(1)[2];
-	console.log(rmvTotal);
+function pressHold(line){
+	
+	hideRow.remove();
+	
 	
 
 }
