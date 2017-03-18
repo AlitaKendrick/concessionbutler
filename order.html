@@ -1,30 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-  <link rel="stylesheet" href="assets/css/style.css">
-  
-  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>
-
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+	<link rel="stylesheet" href="assets/css/style.css">
+	
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
 
 	<script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>
+
+	
  	<script src="assets/js/create-order.js"></script>
-  <script src="assets/js/calc.js"></script>
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Concession Butler</title>
+  <title>Alita Kendrick</title>
+  
 </head>
 <body>
 
-<div class="container-fluid">
+<div class="container">
 
 <!-- header text -->
   <div class="row">
@@ -67,12 +66,10 @@
           	<table class="table table-hover" id='menu-item'>
               <thead>
               <tr>
-              	<th>Remove</th>
               	<th>Item Description</th>
-              	<th>Price</th>
               </tr>
              	</thead>
-              <tbody>
+              <tbody id="tbody">
               </tbody>
              	</table>
           </div>
@@ -90,105 +87,41 @@
 
   	<div class="row">
     <div class="col-md-12">
-  	   <div class="options col-md-2">
+  	   <div class="options">
   			<button class="btn btn-default cancelBtn">Cancel</button>
-        </div>
   			<!-- <button class="btn btn-default submitBtn">Submit</button> -->
 
-  <div class="submitOrder col-md-2">
+  <div class="submitOrder">
     
-<!-- Trigger the modal with a button -->
-        <button type="button" class="btn btn-default continueBtn" data-toggle="modal" data-target="#myModal">Continue</button>
+    <!-- Trigger the modal with a button -->
+    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">Continue</button>
 
 <!-- Modal -->
-      <div id="myModal" class="modal fade" role="dialog">
-      <div class="modal-dialog">
+    <div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
 
 <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Payment</h4>
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
       </div>
       <div class="modal-body">
-        <!-- <p> Calculator Stuff </p> -->
-
-
-    <div class="container">
-
-    <div class="row">
-      <div class="col-md-5">
-        <h1 class="amtDue"> Total Due: $</h1>
+        <p> Calculator Stuff </p>
       </div>
-    </div>
-
-    <div class="row">
-
-      <!-- Calculator Panel -->
-      <div class="col-md-5">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">Calculator</h3>
-          </div>
-
-          <div class="panel-body">
-            <button id="button-1" class="btn btn-primary number" value="1"><h1>$1</h1></button>
-            <button id="button-5" class="btn btn-primary number" value="5"><h1>$5</h1></button>
-            <button id="button-10" class="btn btn-primary number" value="10"><h1>$10</h1></button>
-            <br><br>
-            <button id="button-20" class="btn btn-primary number" value="20"><h1>$20</h1></button>
-            <button id="button-50" class="btn btn-primary number" value="50"><h1>$50</h1></button>
-            <button id="button-100" class="btn btn-primary number" value="100"><h1>$100</h1></button>
-            <br><br>
-
-            <button id="button-change1" class="btn btn-primary number" value=".01"><h1>&#162;1</h1></button>
-            <button id="button-change5" class="btn btn-primary number" value=".05"><h1>&#162;5</h1></button>
-            <button id="button-change10" class="btn btn-primary number" value=".10"><h1>&#162;10</h1></button>
-            <button id="button-change25" class="btn btn-primary number" value=".25"><h1>&#162;25</h1></button>
-            <br><br>
-
-            <button id="button-plus" class="btn btn-danger operator" value="plus"><h1>+</h1></button>
-            <button id="button-minus" class="btn btn-danger operator" value="minus"><h1>&minus;</h1></button>
-            <button id="button-equal" class="btn btn-success equal" value="equals"><h1>=</h1></button>
-            <button id="button-clear" class="btn btn-default clear" value="clear"><h1>clear</h1></button>
-          </div>
-        </div>
-      </div>
-      </div>
-
-      <!-- Result Panel -->
-      <div class="row">
-      <div class="col-md-5">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-
-          </div>
-          <div class="panel-body">
-            <h3 class="amtDue"> Total Due: $</h3>
-            <h3 class="panel-title">Amount Remaining: $ 
-
-            <span id="result"></span> </h3>
-          </div>
-        </div>
-      </div>
-    </div>
-    </div>
-    </div>
-
       <div class="modal-footer">
-        <button type="button" class="btn btn-default btn-success" data-dismiss="modal">Submit</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Submit</button>
       </div>
-      </div>
-      </div>
-      </div>
+    </div>
+
+  </div>
+  </div>
 
   </div>
   </div>
   </div>
   </div>
-
-
-
+  </div>
 
 
 
