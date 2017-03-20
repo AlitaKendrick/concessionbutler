@@ -8,6 +8,18 @@ body {
 	min-height: 50%;
 }
 
+.tickets{
+	width: 100%;
+
+}
+.oneTicket{
+	max-width: 200px;
+	min-height: 400px;
+	margin: 10px;
+}
+.list{
+	min-height: 350px;
+}
 
 /*hides server selector drop down upon 'submit'*/
 .serverSelection {

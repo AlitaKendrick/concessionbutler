@@ -14,20 +14,22 @@ var database = firebase.database();
 var servers = [];
 var menuItems = [];
 var order = [];
+var tempOrder = [];
 var removeRow;
 var removeId;
 var timeoutId = 0; //taphold to remove
+var menuBtnCnt = 0;
 
 var get = {
 
-	servers: function(){
+	servers: function(){ //gets server names from Firbase and fills selection box
 		
 		var getServers = database.ref('servers');
 
 		getServers.on('value', function(snapshot) {
 			snapshot.forEach(function(childSnapshot) {
 			    var childData = childSnapshot.val();
-			    console.log(childData);
+			    // console.log(childData);
 			    servers.push(childData);
 			});
 
@@ -38,18 +40,18 @@ var get = {
 			});
 		});
 	},
-	menu: function(){
+	menu: function(){ //gets menu information from Firbase and generates the menu items
 		var getMenu = database.ref('menu');
 
 		getMenu.on('value', function(snapshot) {
 			snapshot.forEach(function(childSnapshot) {
 			    var childData = childSnapshot.val();
-			    console.log(childData);
+			    // console.log(childData);
 			    menuItems.push(childData);
 			});
 
 		    for ( var i=0; i<menuItems.length;i++){
-		    	console.log(menuItems[i].name);
+		    	// console.log(menuItems[i].name);
 		    	
 		    	var image = $('<img />', { 
 				 src: menuItems[i].pic,
@@ -77,12 +79,14 @@ var get = {
 function renderTable(){
 	$('#tbody').empty();
 
-	for (var i=0; i<order.length; i++){
+	for (var i=0; i<menuBtnCnt; i++){
+		if (order.hasOwnProperty([i])){
+			// order[i].id not sure why this was here
 		$('#menu-item > tbody:last-child').append(
-            '<tr data-id='+ [i] +'>'// need to change closing tag to an opening `<tr>` tag.
+            '<tr data-id='+ order[i].id +'>'
             +'<td>'+order[i].name+'</td>'
-            +'</tr>' //TODO HERE MAKE SURE ID EXISTS BEFORE WRITING
-     );
+            +'</tr>' 
+        )};
 	}
 	calculateTotal();
 }
@@ -96,6 +100,41 @@ function calculateTotal(){
 	$('.moneyUnderline').html("$" + total);
 }
 
+function pressHold(){ //This function removes the item from order.array
+	                 
+	for (var i=0; i<(menuBtnCnt+1);i++){
+		 //check to make sure key exists  
+		if (order.hasOwnProperty([i])){
+ 			
+ 			var checkNum = order[i].id 
+
+			if (checkNum == removeID){
+				
+				 order.splice(i,1);
+				 renderTable();
+				 calculateTotal();
+				 return
+				
+			}
+		}
+	}
+	console.log("Error");
+}
+
+function clearOrder(){
+
+	order = [];
+	$('#tbody').empty();
+	menuBtnCnt = 0;
+	total = 0;
+	$('.moneyUnderline').html("$" + total);
+
+}
+
+/*
+Start 
+*/
+
 get.servers();
 get.menu();
 
@@ -107,6 +146,8 @@ get.menu();
 /*
 Clicks
 */
+
+//Set server button
 $(document).on('click', '#setServer', function() {
 
 	event.preventDefault();
@@ -114,7 +155,6 @@ $(document).on('click', '#setServer', function() {
 	if ( $('#server').val() != '' ) {
 
 		server = $('#server').val();
-		console.log("The server is " + server);
 		
 		//hide current visible window
 		$('.serverSelection').remove();
@@ -123,52 +163,49 @@ $(document).on('click', '#setServer', function() {
 	}
 	
 	else{
-
-		console.log("not set");
-
+		//Now server set
 	}
 	
 });
 
-//Actual submit
+//Submit order to Firebase
 $(document).on('click', '#submitOrder', function() {
-	
-	database.ref().push({
 
-	        order: "order",
+	for (var i=0; i<order.length;i++){ //Removed extra data before sending order
+	
+		tempOrder.push({ 
+		"name": order[i].name, "price": order[i].price
+		});
+
+	}
+	
+	database.ref().child('orders').child(moment().format("M[-]D[-]YY")).push({
+
+	        order: tempOrder,
 	        server: server,
 	        status: "active",
 	        dateAdded: firebase.database.ServerValue.TIMESTAMP
 	});
 
+	menuBtnCnt = 0;
+	order = []
+	tempOrder = []
+	clearOrder();
+
 });
 
-//Menu button click
+//Menu item button click
 $(document).on('click', '.menuBtn', function() {
 	var item = $(this).attr("data-id")
-	var dataId = (order.length + 1);
+	var dataId = menuBtnCnt;
+	
+	menuBtnCnt++;
 		
 	//TODO make sure data-id isn't alreadu used.
 	    
 	total = (total + menuItems[item].price);
 	$('.moneyUnderline').html("$" + total);
-
-	order.push(menuItems[item].name);
-	console.log(total);
-
-});
-
-
-
-//List button remove click
-$(document).on('click', '.rmvBtn', function() {
-	 var rmvTotal = $(this).parent().siblings().eq(1)[0].innerText;
-	 total = (total - rmvTotal);
-	 $('.moneyUnderline').html("$" + total);
-	 $(this).parent().parent().remove();
-	console.log($(this).parentsUntil( $( "<tbody>" )));
-
-
+	
 	
 	order.push({ 
 		"name": menuItems[item].name, "price": menuItems[item].price, "id": dataId 
@@ -178,22 +215,7 @@ $(document).on('click', '.rmvBtn', function() {
 
 	console.log(JSON.stringify(order));
 
-
-$(document).on("click", ".continueBtn", function(){
-console.log("clicked!!!");
-});
-
-$("#myModal").click(function(){
-    $('#pageopen').modal();
-    
-});
-
-
-
-
-/*
-Testing
-*/
+	
 
 });
 
@@ -201,46 +223,36 @@ Testing
 
 $(document).on('mousedown', 'td', function() {
 	removeRow = $(this).parent();
-	removeID  = $(this).parent().attr('data-id');
-	console.log("This is the table data id " + removeID);
+	removeID  = ($(this).parent().attr('data-id'));
+
     timeoutId = setTimeout(pressHold, 1000);
 		}).on('mouseup mouseleave', function() {
    			 clearTimeout(timeoutId);
 });
 
-function pressHold(){
+
+
+
+$(document).on('click', '.continueBtn', function() {
+	if (total > 0){
+     $('#myModal').modal();
+   }
+    
+});
+
+
+$(document).on("click", ".cancelBtn", function(){
 	
-	removeRow.remove();
-	console.log("Data ID" + removeID)
-	 order.splice(order.removeID,1);
-
-	for (var i=0; i<order.length;i++){
-		if ([i] === order[i].id) {
-			 order.splice([i],1)
-		}
-	 
+	var r = confirm("Are you sure?");
+	if (r == true) {
+	    clearOrder()
+	} else {
+	    
 	}
-	renderTable();
-	calculateTotal();
-}
-
+});
 
 
 /*
 Testing
 */
 
-
-  
-
-function pushToDb(){
-	
-	database.ref().child('orders').child(moment().format("M[-]D[-]YY")).push({
-
-	        order: order,
-	        server: server,
-	        status: "active",
-	        dateAdded: firebase.database.ServerValue.TIMESTAMP
-	});
-
-};
