@@ -14,6 +14,7 @@ var database = firebase.database();
 var servers = [];
 var menuItems = [];
 var order = [];
+var tempOrder = [];
 var removeRow;
 var removeId;
 var timeoutId = 0; //taphold to remove
@@ -28,7 +29,7 @@ var get = {
 		getServers.on('value', function(snapshot) {
 			snapshot.forEach(function(childSnapshot) {
 			    var childData = childSnapshot.val();
-			    console.log(childData);
+			    // console.log(childData);
 			    servers.push(childData);
 			});
 
@@ -45,12 +46,12 @@ var get = {
 		getMenu.on('value', function(snapshot) {
 			snapshot.forEach(function(childSnapshot) {
 			    var childData = childSnapshot.val();
-			    console.log(childData);
+			    // console.log(childData);
 			    menuItems.push(childData);
 			});
 
 		    for ( var i=0; i<menuItems.length;i++){
-		    	console.log(menuItems[i].name);
+		    	// console.log(menuItems[i].name);
 		    	
 		    	var image = $('<img />', { 
 				 src: menuItems[i].pic,
@@ -101,9 +102,6 @@ function calculateTotal(){
 
 function pressHold(){ //This function removes the item from order.array
 	                 
-	// removeRow.remove();
-	console.log("Data ID" + removeID)
-
 	for (var i=0; i<(menuBtnCnt+1);i++){
 		 //check to make sure key exists  
 		if (order.hasOwnProperty([i])){
@@ -121,6 +119,16 @@ function pressHold(){ //This function removes the item from order.array
 		}
 	}
 	console.log("Error");
+}
+
+function clearOrder(){
+
+	order = [];
+	$('#tbody').empty();
+	menuBtnCnt = 0;
+	total = 0;
+	$('.moneyUnderline').html("$" + total);
+
 }
 
 /*
@@ -162,23 +170,33 @@ $(document).on('click', '#setServer', function() {
 
 //Submit order to Firebase
 $(document).on('click', '#submitOrder', function() {
-	
-	database.ref().push({
 
-        order: "order",
-        server: server,
-        status: "active",
-        dateAdded: firebase.database.ServerValue.TIMESTAMP
+	for (var i=0; i<order.length;i++){ //Removed extra data before sending order
+	
+		tempOrder.push({ 
+		"name": order[i].name, "price": order[i].price
+		});
+
+	}
+	
+	database.ref().child('orders').child(moment().format("M[-]D[-]YY")).push({
+
+	        order: tempOrder,
+	        server: server,
+	        status: "active",
+	        dateAdded: firebase.database.ServerValue.TIMESTAMP
 	});
 
 	menuBtnCnt = 0;
+	order = []
+	tempOrder = []
+	clearOrder();
 
 });
 
 //Menu item button click
 $(document).on('click', '.menuBtn', function() {
 	var item = $(this).attr("data-id")
-	console.log("This is item " +item);
 	var dataId = menuBtnCnt;
 	
 	menuBtnCnt++;
@@ -207,31 +225,30 @@ $(document).on('mousedown', 'td', function() {
 	removeRow = $(this).parent();
 	removeID  = ($(this).parent().attr('data-id'));
 
-	// console.log("You pressed " + order[removeID].name + " With data id " + order[removeID].id );
-	console.log("This row has an id of "+removeID);
     timeoutId = setTimeout(pressHold, 1000);
 		}).on('mouseup mouseleave', function() {
    			 clearTimeout(timeoutId);
 });
 
 
-// $(document).on("click", ".continueBtn", function(){
-// console.log("clicked!!!");
-// });
 
-$("#myModal").click(function(){
-    $('#pageopen').modal();
+
+$(document).on('click', '.continueBtn', function() {
+	if (total > 0){
+     $('#myModal').modal();
+   }
     
 });
 
 
 $(document).on("click", ".cancelBtn", function(){
-console.log("Order Canceled");
-order = [];
-$('#tbody').empty();
-menuBtnCnt = 0;
-total = 0;
-$('.moneyUnderline').html("$" + total);
+	
+	var r = confirm("Are you sure?");
+	if (r == true) {
+	    clearOrder()
+	} else {
+	    
+	}
 });
 
 
@@ -239,14 +256,3 @@ $('.moneyUnderline').html("$" + total);
 Testing
 */
 
-function pushToDb(){
-	
-	database.ref().child('orders').child(moment().format("M[-]D[-]YY")).push({
-
-	        order: order,
-	        server: server,
-	        status: "active",
-	        dateAdded: firebase.database.ServerValue.TIMESTAMP
-	});
-
-};
