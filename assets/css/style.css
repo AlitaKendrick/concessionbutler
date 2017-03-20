@@ -50,3 +50,7 @@ h2.jumbotron {
 .nav>li>a {
 	float:right;
 }
+
+.navbar-default {
+	height: 75px;
+}
