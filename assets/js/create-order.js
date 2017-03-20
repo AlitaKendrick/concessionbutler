@@ -17,6 +17,7 @@ var order = [];
 var removeRow;
 var removeId;
 var timeoutId = 0; //taphold to remove
+var menuBtnCnt = 0;
 
 var get = {
 
@@ -77,12 +78,14 @@ var get = {
 function renderTable(){
 	$('#tbody').empty();
 
-	for (var i=0; i<order.length; i++){
+	for (var i=0; i<menuBtnCnt; i++){
+		if (order.hasOwnProperty([i])){
+			// order[i].id not sure why this was here
 		$('#menu-item > tbody:last-child').append(
-            '<tr data-id='+ [i] +'>'// need to change closing tag to an opening `<tr>` tag.
+            '<tr data-id='+ order[i].id +'>'
             +'<td>'+order[i].name+'</td>'
-            +'</tr>' //TODO HERE MAKE SURE ID EXISTS BEFORE WRITING
-     );
+            +'</tr>' 
+        )};
 	}
 	calculateTotal();
 }
@@ -96,21 +99,30 @@ function calculateTotal(){
 	$('.moneyUnderline').html("$" + total);
 }
 
-function pressHold(){
-	
-	removeRow.remove();
+function pressHold(){ //This function removes the item from order.array
+	                 
+	// removeRow.remove();
 	console.log("Data ID" + removeID)
-	 order.splice(order.removeID,1);
 
-	for (var i=0; i<order.length;i++){
-		if ([i] === order[i].id) {
-			 order.splice([i],1)
+	for (var i=0; i<(menuBtnCnt+1);i++){
+		 //check to make sure key exists  
+		if (order.hasOwnProperty([i])){
+ 			
+ 			var checkNum = order[i].id 
+
+			if (checkNum == removeID){
+				
+				 order.splice(i,1);
+				 renderTable();
+				 calculateTotal();
+				 return
+				
+			}
 		}
-	 
 	}
-	renderTable();
-	calculateTotal();
+	console.log("Error");
 }
+
 /*
 Start 
 */
@@ -135,7 +147,6 @@ $(document).on('click', '#setServer', function() {
 	if ( $('#server').val() != '' ) {
 
 		server = $('#server').val();
-		console.log("The server is " + server);
 		
 		//hide current visible window
 		$('.serverSelection').remove();
@@ -144,9 +155,7 @@ $(document).on('click', '#setServer', function() {
 	}
 	
 	else{
-
-		console.log("not set");
-
+		//Now server set
 	}
 	
 });
@@ -162,12 +171,17 @@ $(document).on('click', '#submitOrder', function() {
         dateAdded: firebase.database.ServerValue.TIMESTAMP
 	});
 
+	menuBtnCnt = 0;
+
 });
 
 //Menu item button click
 $(document).on('click', '.menuBtn', function() {
 	var item = $(this).attr("data-id")
-	var dataId = (order.length + 1);
+	console.log("This is item " +item);
+	var dataId = menuBtnCnt;
+	
+	menuBtnCnt++;
 		
 	//TODO make sure data-id isn't alreadu used.
 	    
@@ -183,29 +197,42 @@ $(document).on('click', '.menuBtn', function() {
 
 	console.log(JSON.stringify(order));
 
+	
+
 });
 
 //List button remove click
 
 $(document).on('mousedown', 'td', function() {
 	removeRow = $(this).parent();
-	removeID  = $(this).parent().attr('data-id');
-	console.log("This is the table data id " + removeID);
+	removeID  = ($(this).parent().attr('data-id'));
+
+	// console.log("You pressed " + order[removeID].name + " With data id " + order[removeID].id );
+	console.log("This row has an id of "+removeID);
     timeoutId = setTimeout(pressHold, 1000);
 		}).on('mouseup mouseleave', function() {
    			 clearTimeout(timeoutId);
 });
 
 
-$(document).on("click", ".continueBtn", function(){
-console.log("clicked!!!");
-});
+// $(document).on("click", ".continueBtn", function(){
+// console.log("clicked!!!");
+// });
 
 $("#myModal").click(function(){
     $('#pageopen').modal();
     
 });
 
+
+$(document).on("click", ".cancelBtn", function(){
+console.log("Order Canceled");
+order = [];
+$('#tbody').empty();
+menuBtnCnt = 0;
+total = 0;
+$('.moneyUnderline').html("$" + total);
+});
 
 
 /*
