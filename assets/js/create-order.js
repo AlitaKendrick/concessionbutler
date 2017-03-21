@@ -91,12 +91,17 @@ function renderTable(){
 	calculateTotal();
 }
 
+var totalMoneyDueForOrder = 0;
+
+
 function calculateTotal(){
 	total = 0 
 	for (var i=0; i < order.length; i++ ){
 		total = (order[i].price + total)
 	}
 	
+	totalMoneyDueForOrder = total;
+
 	$('.moneyUnderline').html("$" + total);
 }
 
@@ -250,6 +255,99 @@ $(document).on("click", ".cancelBtn", function(){
 	    
 	}
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+   // Make our variables global to the runtime of our application
+     // var totalNumber;
+     var firstNumber = $(".number").val;
+     var operator = $('.operator').val;
+     var isOperatorChosen;
+     var isCalculated;
+
+     // Function initialized calculator
+     // When the user hits clear, we guarantee a reset of the app
+
+     function initializeCalculator() {
+       // hard code result to $20 but will populate dynamically
+       // result = total;
+       firstNumber = "";
+       operator = "";
+       $(".number, #operator, #result").empty();
+     }
+
+     // Add an on click listener to all elements that have the class "operator"
+     $(document).on("click", ".operator", function(){
+     // $(".operator").on("click", function() {
+
+       // Store operator value
+       operator = this.value;
+       console.log(operator);
+
+     });
+
+
+//     function computeTotal(){
+// 	total = 0 
+// 	for (var i=0; i < order.length; i++ ){
+// 		total = (order[i].price + total)
+// 	}
+	
+// 	$('#result').html("$" + total);
+// }
+
+     function showTotal() {
+
+       // Use parseInt to convert our string representation of numbers into actual integers
+       // firstNumber = parseInt(firstNumber);
+       	// result = parseInt(result);
+         firstNumber = parseFloat(firstNumber);
+
+       // Then run the operation and set the HTML of the result of that operation
+       if (operator === "plus") {
+         totalMoneyDueForOrder += firstNumber;
+       }
+
+       if (operator === "minus") {
+         totalMoneyDueForOrder -= firstNumber;
+       }
+
+       $("#result").html("$" + totalMoneyDueForOrder);
+       firstNumber= '';
+       operator= '';
+
+       // computeTotal();
+     };
+
+     // Add an on click listener to all elements that have the class "number"
+     $(document).on("click", ".number", function() {
+
+         firstNumber += this.value;
+         console.log(firstNumber);
+
+         showTotal();
+     });
+
+     
+     // CLEAR BUTTON Add an on click listener to all elements that have the class "clear"
+     $(".clear").on("click", function() {
+
+       // Call initializeCalculater so we can reset the state of our app
+       initializeCalculator();
+
+     });
+
+    initializeCalculator();
 
 
 /*
