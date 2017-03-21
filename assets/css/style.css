@@ -2,71 +2,30 @@ body {
  
 }
 
-/*cook page border for menu*/
-.borderbox {
-	border: 1px solid grey; 
-	/*min-height: 50%;*/
-}
+/*GENERAL STYLE*/
 
-.tickets{
-	width: 100%;
+	.borderbox {
+		border: 1px solid grey; 
+		/*min-height: 50%;*/
+	}
 
-}
-.oneTicket{
-	max-width: 200px;
-	min-height: 400px;
-	margin: 10px;
-}
-.list{
-	min-height: 350px;
-}
+/*ORDER-DISPLAY*/
 
-/*hides server selector drop down upon 'submit'*/
-.serverSelection {
-	height: 100vh;
-}
+	/*.tickets{
+		width: 100%;
 
-.moneyUnderline {
-	text-decoration: underline;
-}
+	}
 
-.currentOrder {
-	display: none;
-}
+	.oneTicket{
+		max-width: 200px;
+		min-height: 400px;
+		margin: 10px;
+	}
 
-.menuItems {
-	display: none;
-}
-
-
-/*LANDING PAGE STYLE*/
-
-
-.jumbotron {
-	background-color: #ffffff;
-	padding-top: 0px;
-}
-
-h2.jumbotron {
-	margin-bottom: 6rem;
-}
-
-.caption {
-	padding-top: 2rem;
-}
-
-.navbar-brand {
-	padding: 0px 15px;
-}
-
-.nav>li>a {
-	float:right;
-}
-
-.navbar-default {
-	height: 75px;
-}
-
+	.list{
+		min-height: 350px;
+	}
+*/
 
 /*TICKET ORDER CSS */
 
@@ -93,3 +52,66 @@ h2.jumbotron {
 .closeBtn {
 	margin-bottom:10px;
 }
+
+
+/*hides server selector drop down upon 'submit'*/
+
+	.serverSelection {
+		height: 100vh;
+	}
+
+	.moneyUnderline {
+		text-decoration: underline;
+	}
+
+	.currentOrder {
+		display: none;
+	}
+
+	.menuItems {
+		display: none;
+	}
+
+
+/*LANDING PAGE STYLE*/
+
+
+.jumbotron {
+	background-color: #ffffff;
+	padding-top: 0px;
+}
+
+h2.jumbotron {
+	margin-bottom: 6rem;
+}
+
+.caption {
+	padding-top: 2rem;
+}
+
+/*NAVIGATION*/
+
+.navbar-brand {
+	padding: 0px 15px;
+}
+
+.nav>li>a {
+	float:right;
+}
+
+.navbar-default {
+	height: 75px;
+}
+
+
+/*HAMBURGER*/
+.navbar-header button.navbar-toggle .icon-bar  {
+	background-color: #e4513f;
+    width: 32px;
+    height: 5px;
+}
+
+.navbar-default .navbar-toggle {
+	border: none;
+}
+
