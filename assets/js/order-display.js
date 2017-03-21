@@ -76,8 +76,8 @@ function load(){
 }
 
 $(document).on("click", ".closeBtn", function() {
-  var ticket = ($(this).parent().parent().attr("id"))
-
+  var ticket = ($(this).parent().attr("id"))
+  
   database.ref("orders/"+ moment().format("M[-]D[-]YY") + "/" + ticket).update({
 
   status: "closed",
