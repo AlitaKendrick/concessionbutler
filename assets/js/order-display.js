@@ -42,21 +42,19 @@ function load(){
       
       for (var j=0; j<onOrder.length;j++){
 
-        temp.push(onOrder[j].name + "<br>");
+        temp.push('<li class="oneTicketListItem">' + onOrder[j].name + "<li>");
 
       }
 
   var ticket = $("<div>",{
                  id: orders[i].orderKey,
-                 class: "oneTicket col-md-3 borderbox",
-                 html: "<center>" + 
-                        "</center>"
+                 class: "oneTicket col-xs-6 col-sm-3 col-md-3 borderbox",
+                 
               });
-    var list = $("<div>",{
-               class: "list",
-               html: "<center>" + 
-                      temp + 
-                      "</center>"
+    var list = $("<ul>",{
+               class: "oneTicketList",
+               html: temp.join("") + '</ul' 
+                      
             });
         list.appendTo(ticket);
         
