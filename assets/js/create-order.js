@@ -266,57 +266,45 @@ $(document).on("click", ".cancelBtn", function(){
 
 
 
+//CACULATOR CODE 
 
-
-   // Make our variables global to the runtime of our application
-     // var totalNumber;
+// Make our variables global to the runtime of our application
+// var totalNumber;
      var firstNumber = $(".number").val;
      var operator = $('.operator').val;
      var isOperatorChosen;
      var isCalculated;
 
-     // Function initialized calculator
-     // When the user hits clear, we guarantee a reset of the app
+// Function initialized calculator
+// When the user hits clear, we guarantee a reset of the app
 
      function initializeCalculator() {
-       // hard code result to $20 but will populate dynamically
-       // result = total;
        firstNumber = "";
        operator = "";
-       $(".number, #operator, #result").empty();
-     }
+       $(".number, .operator, #result").empty();
+     };
+     initializeCalculator();
 
-     // Add an on click listener to all elements that have the class "operator"
+
+// Add an on click listener to all elements that have the class "operator"
      $(document).on("click", ".operator", function(){
-     // $(".operator").on("click", function() {
-
-       // Store operator value
        operator = this.value;
        console.log(operator);
 
      });
 
 
-//     function computeTotal(){
-// 	total = 0 
-// 	for (var i=0; i < order.length; i++ ){
-// 		total = (order[i].price + total)
-// 	}
-	
-// 	$('#result').html("$" + total);
-// }
-
      function showTotal() {
 
-       // Use parseInt to convert our string representation of numbers into actual integers
-       // firstNumber = parseInt(firstNumber);
-       	// result = parseInt(result);
-         firstNumber = parseFloat(firstNumber);
+// Use parseInt to convert our string representation of numbers into actual integers
+// firstNumber = parseInt(firstNumber);
+// result = parseInt(result);
+       firstNumber = parseFloat(firstNumber);
 
-       // Then run the operation and set the HTML of the result of that operation
-       if (operator === "plus") {
-         totalMoneyDueForOrder += firstNumber;
-       }
+// Then run the operation and set the HTML of the result of that operation
+       // if (operator === "plus") {
+       //   totalMoneyDueForOrder += firstNumber;
+       // }
 
        if (operator === "minus") {
          totalMoneyDueForOrder -= firstNumber;
@@ -326,10 +314,9 @@ $(document).on("click", ".cancelBtn", function(){
        firstNumber= '';
        operator= '';
 
-       // computeTotal();
      };
 
-     // Add an on click listener to all elements that have the class "number"
+// Add an on click listener to all elements that have the class "number"
      $(document).on("click", ".number", function() {
 
          firstNumber += this.value;
@@ -339,15 +326,24 @@ $(document).on("click", ".cancelBtn", function(){
      });
 
      
-     // CLEAR BUTTON Add an on click listener to all elements that have the class "clear"
-     $(".clear").on("click", function() {
-
-       // Call initializeCalculater so we can reset the state of our app
-       initializeCalculator();
-
+// CLEAR BUTTON Add an on click listener to all elements that have the class "clear"
+     $(document).on("click", "#button-clear", function(){
+     	console.log("click");
+// Call initializeCalculater so we can reset the state of our app
+       $("#result").html("$" + total);
      });
 
+
+     // $(document).on("click", ".modalClose", function{
+     // 	$("#result").html("$" + total);
+     // });
+
     initializeCalculator();
+
+
+
+
+
 
 
 /*
