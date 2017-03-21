@@ -14,7 +14,7 @@ var isLoaded = false;
 var orders = [];
 var temp = [];
 var onOrder;
-var poop;
+
 
 database.ref("orders").child(moment().format("M[-]D[-]YY")).orderByChild("status").equalTo("active").on("child_added", function(snapshot) {
 
@@ -42,24 +42,26 @@ function load(){
       
       for (var j=0; j<onOrder.length;j++){
 
-        temp.push('<li class="oneTicketListItem">' + onOrder[j].name + "<li>");
+        temp.push('<li class="oneTicketListItem">' + onOrder[j].name + "</li>");
 
       }
 
-  var ticket = $("<div>",{
+    var ticket = $("<div>",{
                  id: orders[i].orderKey,
                  class: "oneTicket col-xs-6 col-sm-3 col-md-3 borderbox",
                  
               });
+
     var list = $("<ul>",{
                class: "oneTicketList",
-               html: temp.join("") + '</ul' 
+               html: temp
                       
             });
         list.appendTo(ticket);
         
+        
         ticket.appendTo(".tickets");
-        $("#"+orders[i].orderKey).append("<center><button class=\"closeBtn\">Close</button><center>");
+        $("#"+orders[i].orderKey).append("<center><button class=\"closeBtn\">Close</button></center>");
     temp = [];
     }
     isLoaded = true
