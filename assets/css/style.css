@@ -4,8 +4,8 @@ body {
 
 /*cook page border for menu*/
 .borderbox {
-	border: 10px solid blue; 
-	min-height: 50%;
+	border: 1px solid grey; 
+	/*min-height: 50%;*/
 }
 
 .tickets{
@@ -65,4 +65,31 @@ h2.jumbotron {
 
 .navbar-default {
 	height: 75px;
+}
+
+
+/*TICKET ORDER CSS */
+
+.oneTicketList {
+	list-style: none;
+	font-family:courier;
+	font-size: 24px;
+	padding-left: 0px;
+	min-height: 400px;
+	max-height: 400px;
+}
+
+.oneTicket {
+	max-width: 200px;
+    min-height: 400px;
+    margin: 10px;
+    box-shadow: 5px 5px 1px #888888;
+}
+
+.oneTicketListItem {
+	text-align: center;
+}
+
+.closeBtn {
+	margin-bottom:10px;
 }
