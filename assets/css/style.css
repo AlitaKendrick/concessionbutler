@@ -6,6 +6,18 @@ body {
 	padding: 10px;
 }
 
+.totalDue {
+	padding: 30px;
+}
+
+.serverButtons {
+	padding: 30px;
+}
+
+.submitOrder {
+	float: right;
+}
+
 /*GENERAL STYLE*/
 
 	.borderbox {
@@ -42,8 +54,6 @@ body {
 	max-height: 400px;
 }
 
-<<<<<<< HEAD
-
 
 /*hides server selector drop down upon 'submit'*/
 .serverSelection {
@@ -55,7 +65,9 @@ body {
 
 .moneyUnderline {
 	/*text-decoration: underline;*/
-=======
+
+}
+
 .oneTicket {
 	max-width: 200px;
     min-height: 400px;
@@ -65,7 +77,6 @@ body {
 
 .oneTicketListItem {
 	text-align: center;
->>>>>>> f7fecbc4ca5fcafd96157e6bcc16d43cfff732cd
 }
 
 .closeBtn {
@@ -80,7 +91,7 @@ body {
 	}
 
 	.moneyUnderline {
-		text-decoration: underline;
+		/*text-decoration: underline;*/
 	}
 
 	.currentOrder {
@@ -134,7 +145,7 @@ h2.jumbotron {
 }
 
 
-<<<<<<< HEAD
+
 
 /*TICKET ORDER CSS */
 .oneTicketList {
@@ -144,13 +155,13 @@ h2.jumbotron {
 	padding-left: 0px;
 	min-height: 400px;
 	max-height: 400px;
-=======
+}
+
 /*HAMBURGER*/
-.navbar-header button.navbar-toggle .icon-bar  {
+.navbar-header button .navbar-toggle .icon-bar  {
 	background-color: #e4513f;
     width: 32px;
     height: 5px;
->>>>>>> f7fecbc4ca5fcafd96157e6bcc16d43cfff732cd
 }
 
 .navbar-default .navbar-toggle {
