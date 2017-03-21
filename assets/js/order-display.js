@@ -19,13 +19,12 @@ var onOrder;
 database.ref("orders").child(moment().format("M[-]D[-]YY")).orderByChild("status").equalTo("active").on("child_added", function(snapshot) {
 
   orders.push({
-    "orderKey": snapshot.key, "order": snapshot.val().order
+    "orderKey": snapshot.key, "order": snapshot.val().order, "server": snapshot.val().server
   });
 
   if (isLoaded == true ){
     
     audio.play();
-    console.log("Play");
  
   }
 
@@ -49,6 +48,7 @@ function load(){
     var ticket = $("<div>",{
                  id: orders[i].orderKey,
                  class: "oneTicket col-xs-6 col-sm-3 col-md-3 borderbox",
+                 html: "Server: " + orders[i].server
                  
               });
 
