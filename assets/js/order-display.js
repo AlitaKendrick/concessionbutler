@@ -19,13 +19,15 @@ var onOrder;
 database.ref("orders").child(moment().format("M[-]D[-]YY")).orderByChild("status").equalTo("active").on("child_added", function(snapshot) {
 
   orders.push({
-    "orderKey": snapshot.key, "order": snapshot.val().order
+    "orderKey": snapshot.key, "order": snapshot.val().order,
+     "server": snapshot.val().server, "time": moment(snapshot.val().dateAdded)
   });
+
+ 
 
   if (isLoaded == true ){
     
     audio.play();
-    console.log("Play");
  
   }
 
@@ -49,9 +51,12 @@ function load(){
     var ticket = $("<div>",{
                  id: orders[i].orderKey,
                  class: "oneTicket col-xs-6 col-sm-3 col-md-3 borderbox",
-                 
-              });
+                 html: '<div class="serverName">' + "Server: " + orders[i].server + '</div>' +
+                      '<div class="timestamp"><span data-livestamp="' + moment(orders[i].time).toISOString() + '"></span>' + '</div>'
+                      
 
+              });
+          
     var list = $("<ul>",{
                class: "oneTicketList",
                html: temp
@@ -61,7 +66,9 @@ function load(){
         
         
         ticket.appendTo(".tickets");
-        $("#"+orders[i].orderKey).append("<center><button class=\"closeBtn\">Close</button></center>");
+        $("#"+orders[i].orderKey).append('<button type="button" class="closeBtn btn btn-warning">Close</button>');
+
+ 
     temp = [];
     }
     isLoaded = true
@@ -69,8 +76,8 @@ function load(){
 }
 
 $(document).on("click", ".closeBtn", function() {
-  var ticket = ($(this).parent().parent().attr("id"))
-
+  var ticket = ($(this).parent().attr("id"))
+  
   database.ref("orders/"+ moment().format("M[-]D[-]YY") + "/" + ticket).update({
 
   status: "closed",
@@ -85,3 +92,4 @@ $(document).on("click", ".closeBtn", function() {
     }
   }
 });
+
