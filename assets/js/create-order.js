@@ -248,7 +248,7 @@ $(document).on('click', '.continueBtn', function() {
 
 $(document).on("click", ".cancelBtn", function(){
 	
-	var r = confirm("Are you sure?");
+	var r = confirm("Are you sure you want to cancel your order?");
 	if (r == true) {
 	    clearOrder()
 	} else {
@@ -283,16 +283,7 @@ $(document).on("click", ".cancelBtn", function(){
        operator = "";
        $(".number, .operator, #result").empty();
      };
-     initializeCalculator();
-
-
-// Add an on click listener to all elements that have the class "operator"
-     $(document).on("click", ".operator", function(){
-       operator = this.value;
-       console.log(operator);
-
-     });
-
+     // initializeCalculator();
 
      function showTotal() {
 
@@ -325,18 +316,26 @@ $(document).on("click", ".cancelBtn", function(){
          showTotal();
      });
 
+
+// Add an on click listener to all elements that have the class "operator"
+     $(document).on("click", ".operator", function(){
+       operator = this.value;
+       console.log(operator);
+
+     });
+
      
 // CLEAR BUTTON Add an on click listener to all elements that have the class "clear"
      $(document).on("click", "#button-clear", function(){
-     	console.log("click");
+     	// console.log("click");
 // Call initializeCalculater so we can reset the state of our app
+       // firstNumber= '';
+       // operator= '';
        $("#result").html("$" + total);
+       $(firstNumber, operator).empty();
      });
 
 
-     // $(document).on("click", ".modalClose", function{
-     // 	$("#result").html("$" + total);
-     // });
 
     initializeCalculator();
 

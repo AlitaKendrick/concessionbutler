@@ -1,5 +1,9 @@
 body {
- 
+
+}
+
+.container-fluid {
+	padding: 10px;
 }
 
 /*cook page border for menu*/
@@ -21,13 +25,18 @@ body {
 	min-height: 350px;
 }
 
+
+
 /*hides server selector drop down upon 'submit'*/
 .serverSelection {
 	height: 100vh;
+	text-align: center;
+	padding-left: 35%;
+	margin: auto;
 }
 
 .moneyUnderline {
-	text-decoration: underline;
+	/*text-decoration: underline;*/
 }
 
 .currentOrder {
@@ -39,9 +48,20 @@ body {
 }
 
 
+
+/*calculator formatting*/
+#button-minus {
+	width: 100%;
+	display:inline-block;
+}
+
+.number {
+	object-position: center;
+}
+
+
+
 /*LANDING PAGE STYLE*/
-
-
 .jumbotron {
 	background-color: #ffffff;
 	padding-top: 0px;
@@ -68,8 +88,8 @@ h2.jumbotron {
 }
 
 
-/*TICKET ORDER CSS */
 
+/*TICKET ORDER CSS */
 .oneTicketList {
 	list-style: none;
 	font-family:courier;

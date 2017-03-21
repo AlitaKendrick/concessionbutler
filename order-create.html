@@ -2,46 +2,42 @@
 <html lang="en">
 
 <head>
+<!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="assets/css/style.css">
+<!-- favicon -->
+    <link rel="favicon" href="assets/images/cbFavicon.png"/>
 
+<!-- Title -->
+    <title>Concession Butler</title>
+   
+<!-- Scripts: jQuery, Moment-->
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-
-    <!-- favicon -->
-
-    <link rel="favicon" href="assets/images/cbFavicon.png" />
-
-
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>
 
+<!-- Bootstrap Stylesheet-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
+
+<!-- Firebase  -->
     <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
 
+<!--   Main stylesheet -->
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
     <script src="assets/js/create-order.js"></script>
-    <!-- <script src="assets/js/calc.js"></script> -->
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Concession Butler</title>
 </head>
 
 <body>
 
-
-        <!-- header text -->
-<!--         <div class="row">
-            <h1> Concession Butler </h1>
-        </div> -->
-
-
 <!-- NAVIGATION W/ HAMBURGER -->
     <nav class="navbar navbar-default">
       <div class="container-fluid">
-
 <!-- THIS IS WHAT MAKES THE HAMBURGER EXPAND -->
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#cb-navbar-collapse-1" aria-expanded="false">
@@ -50,88 +46,86 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-
 <!-- THIS IS WHERE THE LOGO GOES -->
           <a class="navbar-brand" href="#">
             <img alt="Brand" src="assets/images/brandIcon.png">
           </a>
-        </div>
+        </div> <!-- close navbar header -->
 
 <!-- LINKS THAT WILL BE COLLAPSED INTO HAMBURGER -->
         <div class="collapse navbar-collapse" id="cb-navbar-collapse-1">
-
           <ul class="nav navbar-nav navbar-right">
             <li><a href="index.html">Home</a></li>
             <li><a href="order-create.html">Server</a></li>
             <li><a href="#">Admin</a></li>
             <li><a href="order-display.html">Cook</a></li>
           </ul>
-
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
-    </nav>        
+    </nav>     
 
-        <!-- server login info with dropdown  -->
-        <div class="row serverSelection">
-            <div class="col-md-5">
-                <h1> Server Name </h1>
-                <div class="form-group">
-                    <label for="exampleSelect1">Select your server</label>
-                    <select class="form-control" id="server">
-                        <option></option>
-                    </select>
-                    <br>
-                    <button class="btn btn-default" id="setServer">Submit</button>
-                </div>
-            </div>
+
+<div class="container-fluid">
+
+<!-- server login info with dropdown  -->
+    <div class="row serverSelection">
+        <div class="col-md-6">
+            <h1> Server Name </h1>
+        <div class="form-group">
+            <label for="exampleSelect1">Select your server</label>
+            <select class="form-control" id="server">
+                <option></option>
+            </select>
+            <br>
+            <button class="btn btn-default btn-success" id="setServer">Submit</button>
+        </div> <!-- closing form-group -->
+        </div> <!-- closing col-md-6 -->
+    </div> <!-- closing server slection -->
+
+
+<!-- menu items selection  -->
+    <div class="row menuItems">
+        <div class="col-md-12 menuItems" id="menu">
+<!-- Menu items will be generated and placed here -->
+        </div>
+    </div>
+
+
+<!-- current order section -->
+    <div class="row currentOrder">
+        <div class="col-md-12">
+            <div class="panel-body">
+                <table class="table table-hover" id='menu-item'>
+                    <thead>
+                    <tr>
+                    <th>Item Description</th>
+                    </tr>
+                    </thead>
+                    <tbody id="tbody">
+                    </tbody>
+                </table>
+            </div> <!-- closing panel body -->
+        </div> <!-- closing col-md-12 -->
+
+
+<!-- total amount due section -->
+    <div class="row totalDue">
+        <div class="col-md-12">
+            <h2> Total Due: <span class="moneyUnderline"> </span> </h2>
+        </div> <!-- closing col-md-12 -->
+    </div> <!-- closing totaldue row -->
+
+
+<!-- server options  -->
+    <div class="row serverButtons">
+        <div class="col-md-4">
+<!-- cancel button to start over  -->
+            <button type="button" class="btn btn-default btn-danger cancelBtn btn-lg" data-dismiss="alert" aria-label="Close"> Cancel </button>
         </div>
 
-        <!-- menu items selection  -->
-        <div class="row menuItems">
-            <div class="col-md-12 menuItems" id="menu">
-
-                <!-- Menu items will be generated and placed here -->
-
-            </div>
-        </div>
-
-        <!-- current order section -->
-        <div class="row currentOrder">
-
-            <div class="col-md-12">
-
-                <div class="panel-body">
-                    <table class="table table-hover" id='menu-item'>
-                        <thead>
-                            <tr>
-                                <th>Item Description</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tbody">
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-        <div class="row totalDue">
-            <div class="col-md-12">
-                <h2> Total Due: </h2>
-                <h2 class="moneyUnderline"> $0.00 </h2>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-12">
-                <div class="options col-md-2">
-                    <button class="btn btn-default cancelBtn">Cancel</button>
-                </div>
-<!-- <button class="btn btn-default submitBtn">Submit</button> -->
-
-        <div class="submitOrder col-md-2">
-
+        <div class="submitOrder col-md-4">
 <!-- Trigger the modal with a button -->
-        <button type="button" class="btn btn-default continueBtn" data-toggle="modal" >Continue</button>
-
+            <button type="button" class="btn btn-default continueBtn btn-lg" data-toggle="modal">Continue</button>
 <!-- Modal -->
         <div id="myModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
@@ -140,96 +134,91 @@
         <div class="modal-header">
             <button type="button" class="close modalClose" data-dismiss="modal">&times;</button>
             <h4 class="modal-title">Payment</h4>
-        </div>
+        </div> <!-- closes modal-header -->
         <div class="modal-body">
 <!-- <p> Calculator Stuff </p> -->
-
-        <div class="container">
-
+    <div class="container">
         <div class="row">
-            <div class="col-md-5">
-                <h2> Total Due: </h2>
-                <h2 class="moneyUnderline"> $0.00 </h2>
-            </div>
-        </div>
-
-        <div class="row">
+            <div class="col-md-6">
+                <h2> Total Due: <span class="moneyUnderline"> </span> </h2>
+            </div> <!-- closes col-md-6 -->
+        </div> <!-- closes row -->
 <!-- Calculator Panel -->
-        <div class="col-md-5">
+        <div class="row">
+        <div class="col-md-6">
         <div class="panel panel-default">
         <div class="panel-heading">
             <h3 class="panel-title">Calculator</h3>
-        </div>
+        </div> <!-- closes panel head -->
 
         <div class="panel-body">
             <button id="button-1" class="btn btn-primary number" value="1">
-            <h1>$1</h1></button>
+            <h3>$1</h3></button>
             <button id="button-5" class="btn btn-primary number" value="5">
-            <h1>$5</h1></button>
+            <h3>$5</h3></button>
             <button id="button-10" class="btn btn-primary number" value="10">
-            <h1>$10</h1></button>
-            <br>
-            <br>
+            <h3>$10</h3></button>
             <button id="button-20" class="btn btn-primary number" value="20">
-            <h1>$20</h1></button>
+            <h3>$20</h3></button>
             <button id="button-50" class="btn btn-primary number" value="50">
-            <h1>$50</h1></button>
+            <h3>$50</h3></button>
             <button id="button-100" class="btn btn-primary number" value="100">
-            <h1>$100</h1></button>
+            <h3>$100</h3></button>
             <br>
             <br>
             <button id="button-change1" class="btn btn-primary number" value=".01">
-            <h1>&#162;1</h1></button>
+            <h3>&#162;1</h3></button>
             <button id="button-change5" class="btn btn-primary number" value=".05">
-            <h1>&#162;5</h1></button>
+            <h3>&#162;5</h3></button>
             <button id="button-change10" class="btn btn-primary number" value=".10">
-            <h1>&#162;10</h1></button>
+            <h3>&#162;10</h3></button>
             <button id="button-change25" class="btn btn-primary number" value=".25">
-            <h1>&#162;25</h1></button>
+            <h3>&#162;25</h3></button>
             <br>
             <br>
-
-            <button id="button-minus" class="btn btn-danger operator" value="minus">
-            <h1>&minus;</h1></button>
-            <button id="button-clear" class="btn btn-default clear" value="clear">
-            <h1>clear</h1></button>
-            </div>
-            </div>
-            </div>
-            </div>
+            <div class="col-md-8">
+                <button id="button-minus" class="btn btn-danger operator" value="minus">
+                <h3>&minus;</h3></button>
+            </div> <!-- closes minus div -->
+            <div class="col-md-4">
+                <button id="button-clear" class="btn btn-default clear" value="clear">
+                <h3>clear</h3></button>
+            </div> <!-- closes clear div  -->
+        </div> <!-- closes panel body  -->
+        </div> <!-- closes panel default -->
+        </div> <!-- closes col-md -->
+        </div> <!-- closes row -->
 
 <!-- Result Panel -->
     <div class="row">
-    <div class="col-md-5">
+    <div class="col-md-6">
     <div class="panel panel-default">
     <div class="panel-heading">
-    </div>
+    </div> <!-- closes panel head -->
     <div class="panel-body">
-    <!-- <h3 class="amtDue"> Total Due: $</h3> -->
-     <!--    <h2> Total Due: </h2>
-                <h2 class="moneyUnderline"> $0.00 </h2>
- -->
-    <h3 class="panel-title amtRemain">Amount Remaining: <span id="result"></span> </h3>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
+        <h3 class="panel-title amtRemain">Amount Remaining: <span id="result"></span> </h3>
+    </div> <!-- closes panel-body -->
+    </div> <!-- closes panel def -->
+    </div> <!-- closes col-md -->
+    </div> <!-- closes row -->
     </div>
 
     <div class="modal-footer">
             <button type="button" id="submitOrder" class="btn btn-default btn-success" data-dismiss="modal">Submit</button>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
+    </div> <!-- closes footer --> 
+
+    </div> <!-- close container -->
+    </div> <!-- close modal body -->
+    </div> <!-- close modal content -->
+    </div> <!-- close modal dialog -->
+    </div> <!-- close mymodal -->
+    </div> <!-- close submit order -->
+    </div> <!-- close server btn -->
 
 
- 
+ </div> <!-- closes container fluid -->
+
+
 
 </body>
 
