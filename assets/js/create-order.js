@@ -64,7 +64,7 @@ var get = {
 		    	var div = $('<div >',{
   				 id: menuItems[i].name,
   				 class: 'menuBtns col-md-2',
-  				 html: '<center><strong>$ ' + menuItems[i].price + '</strong></center>'
+  				 html: '<div class="price">' + "$" + menuItems[i].price + '</div>'
 				});
 
 				image.appendTo(div);
@@ -84,11 +84,12 @@ function renderTable(){
 			// order[i].id not sure why this was here
 		$('#menu-item > tbody:last-child').append(
             '<tr data-id='+ order[i].id +'>'
-            +'<td>'+order[i].name+'</td>'
+            +'<td class="item">'+order[i].name+'</td>'
             +'</tr>' 
         )};
 	}
 	calculateTotal();
+	setList();
 }
 
 var totalMoneyDueForOrder = 0;
@@ -135,6 +136,29 @@ function clearOrder(){
 	$('.moneyUnderline').html("$" + total);
 
 }
+
+function setList(){
+	Pressure.set('.item', {
+		start: function(event){
+
+			},
+		end: function(){
+
+			},
+		startDeepPress: function(event){
+		 $(this).css("background-color", "orange")
+			},
+		endDeepPress: function(){
+			removeRow = $(this).parent();
+			removeID  = ($(this).parent().attr('data-id'));
+		pressHold();
+			},
+		change: function(force, event){
+			},
+		unsupported: function(){
+			}
+});}
+
 
 /*
 Start 
@@ -189,7 +213,7 @@ $(document).on('click', '#submitOrder', function() {
 	        order: tempOrder,
 	        server: server,
 	        status: "active",
-	        dateAdded: firebase.database.ServerValue.TIMESTAMP
+	        timeAdded: firebase.database.ServerValue.TIMESTAMP
 	});
 
 	menuBtnCnt = 0;
@@ -224,18 +248,6 @@ $(document).on('click', '.menuBtn', function() {
 
 });
 
-//List button remove click
-
-$(document).on('mousedown', 'td', function() {
-	removeRow = $(this).parent();
-	removeID  = ($(this).parent().attr('data-id'));
-
-    timeoutId = setTimeout(pressHold, 1000);
-		}).on('mouseup mouseleave', function() {
-   			 clearTimeout(timeoutId);
-});
-
-
 
 
 $(document).on('click', '.continueBtn', function() {
@@ -248,20 +260,13 @@ $(document).on('click', '.continueBtn', function() {
 
 $(document).on("click", ".cancelBtn", function(){
 	
-	var r = confirm("Are you sure?");
+	var r = confirm("Are you sure you want to cancel your order?");
 	if (r == true) {
 	    clearOrder()
 	} else {
 	    
 	}
 });
-
-
-
-
-
-
-
 
 
 
@@ -283,16 +288,7 @@ $(document).on("click", ".cancelBtn", function(){
        operator = "";
        $(".number, .operator, #result").empty();
      };
-     initializeCalculator();
-
-
-// Add an on click listener to all elements that have the class "operator"
-     $(document).on("click", ".operator", function(){
-       operator = this.value;
-       console.log(operator);
-
-     });
-
+     // initializeCalculator();
 
      function showTotal() {
 
@@ -325,18 +321,26 @@ $(document).on("click", ".cancelBtn", function(){
          showTotal();
      });
 
+
+// Add an on click listener to all elements that have the class "operator"
+     $(document).on("click", ".operator", function(){
+       operator = this.value;
+       console.log(operator);
+
+     });
+
      
 // CLEAR BUTTON Add an on click listener to all elements that have the class "clear"
      $(document).on("click", "#button-clear", function(){
-     	console.log("click");
+     	// console.log("click");
 // Call initializeCalculater so we can reset the state of our app
+       // firstNumber= '';
+       // operator= '';
        $("#result").html("$" + total);
+       $(firstNumber, operator).empty();
      });
 
 
-     // $(document).on("click", ".modalClose", function{
-     // 	$("#result").html("$" + total);
-     // });
 
     initializeCalculator();
 
@@ -349,4 +353,31 @@ $(document).on("click", ".cancelBtn", function(){
 /*
 Testing
 */
+
+
+
+function setList(){
+	Pressure.set('.item', {
+		start: function(event){
+
+			},
+		end: function(){
+
+			},
+		startDeepPress: function(event){
+		 $(this).css("background-color", "orange")
+			},
+		endDeepPress: function(){
+			removeRow = $(this).parent();
+			removeID  = ($(this).parent().attr('data-id'));
+		pressHold();
+			},
+		change: function(force, event){
+			},
+		unsupported: function(){
+		}
+	});
+}
+
+
 

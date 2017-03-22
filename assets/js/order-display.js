@@ -20,7 +20,7 @@ database.ref("orders").child(moment().format("M[-]D[-]YY")).orderByChild("status
 
   orders.push({
     "orderKey": snapshot.key, "order": snapshot.val().order,
-     "server": snapshot.val().server, "time": moment(snapshot.val().dateAdded)
+     "server": snapshot.val().server, "time": moment(snapshot.val().timeAdded)
   });
 
  
@@ -81,6 +81,7 @@ $(document).on("click", ".closeBtn", function() {
   database.ref("orders/"+ moment().format("M[-]D[-]YY") + "/" + ticket).update({
 
   status: "closed",
+  timeClosed: firebase.database.ServerValue.TIMESTAMP
 
   });
 
