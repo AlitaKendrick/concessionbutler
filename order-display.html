@@ -40,50 +40,58 @@
 
 <body>
 
-<audio id="audio" src="assets/snd/beep.mp3"></audio>
+    <audio id="audio" src="assets/snd/beep.mp3"></audio>
 
-<!-- NAVIGATION W/ HAMBURGER -->
+<!-- NAVIGATION -->
     <nav class="navbar navbar-default">
-      <div class="container-fluid">
-<!-- THIS IS WHAT MAKES THE HAMBURGER EXPAND -->
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#cb-navbar-collapse-1" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-<!-- THIS IS WHERE THE LOGO GOES -->
-          <a class="navbar-brand" href="index.html">
-            <img alt="Brand" src="assets/images/brandIcon.png">
-          </a>
-        </div>
-<!-- LINKS THAT WILL BE COLLAPSED INTO HAMBURGER -->
-        <div class="collapse navbar-collapse" id="cb-navbar-collapse-1">
+        <div class="container-fluid">
 
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="order-create.html">Servers</a></li>
-            <li><a href="order-display.html">Orders</a></li>
-          </ul>
-        </div><!-- /.navbar-collapse -->
-      </div><!-- /.container-fluid -->
+            <div class="row navbar-header">
+
+              <!-- LOGO -->
+                  <a class="navbar-brand" href="index.html">
+                    <img alt="Brand" src="assets/images/brandIcon.png">
+                  </a>
+                  <h3 class="brandTitle">Concession Butler</h3>
+
+              <!-- HAMBURGER -->
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#cb-navbar-collapse-1" aria-expanded="false">
+                      <!-- <span class="sr-only">Toggle navigation</span> -->
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                  </button>
+            
+            </div> <!-- end .row .navbar-header-->
+
+            <!-- NAV LINKS -->
+          <div class="row ">
+            <div class="navLinkWrapper">
+                <div class="collapse navbar-collapse" id="cb-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                      <li><a class="navLinks" href="order-create.html">Servers</a></li>
+                      <li><a class="navLinks" href="order-display.html">Orders</a></li>
+                    </ul>
+                </div><!-- /end .navbar-collapse --> 
+            </div> <!-- end navLinkWrapper -->
+          </div> <!-- end row -->
+              
+        </div><!-- /.container-fluid -->
     </nav>
 
-
-
-<div class="container">
-	<div class="row"> 
-		<h1> Active Orders </h1>
-	</div> <!-- closing row -->
-	
-	<div class="row">
-		<div class="col-md-12 borderbox tickets"> 
-	 	</div> <!-- closing borderbox -->
-	 </div> <!-- closing row -->
-
-
-
-</div> <!-- closing container  -->
+<!-- MAINCONTENT -->
+    <div class="container-fluid">
+      	<div class="row"> 
+            <div class="col-md-12">
+       		     <h1> Active Orders </h1>
+            </div>
+      	</div> <!-- closing row -->
+      	
+      	<div class="row">
+        		<div class="col-md-12 borderbox tickets"> 
+        	 	</div> <!-- closing borderbox -->
+      	 </div> <!-- closing row -->
+    </div> <!-- end .container-fluid  -->
 
 </body>
 </html>
