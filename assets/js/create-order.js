@@ -84,11 +84,12 @@ function renderTable(){
 			// order[i].id not sure why this was here
 		$('#menu-item > tbody:last-child').append(
             '<tr data-id='+ order[i].id +'>'
-            +'<td>'+order[i].name+'</td>'
+            +'<td class="item">'+order[i].name+'</td>'
             +'</tr>' 
         )};
 	}
 	calculateTotal();
+	setList();
 }
 
 var totalMoneyDueForOrder = 0;
@@ -135,6 +136,29 @@ function clearOrder(){
 	$('.moneyUnderline').html("$" + total);
 
 }
+
+function setList(){
+	Pressure.set('.item', {
+		start: function(event){
+
+			},
+		end: function(){
+
+			},
+		startDeepPress: function(event){
+		 $(this).css("background-color", "orange")
+			},
+		endDeepPress: function(){
+			removeRow = $(this).parent();
+			removeID  = ($(this).parent().attr('data-id'));
+		pressHold();
+			},
+		change: function(force, event){
+			},
+		unsupported: function(){
+			}
+});}
+
 
 /*
 Start 
@@ -224,18 +248,6 @@ $(document).on('click', '.menuBtn', function() {
 
 });
 
-//List button remove click
-
-$(document).on('mousedown', 'td', function() {
-	removeRow = $(this).parent();
-	removeID  = ($(this).parent().attr('data-id'));
-
-    timeoutId = setTimeout(pressHold, 1000);
-		}).on('mouseup mouseleave', function() {
-   			 clearTimeout(timeoutId);
-});
-
-
 
 
 $(document).on('click', '.continueBtn', function() {
@@ -255,13 +267,6 @@ $(document).on("click", ".cancelBtn", function(){
 	    
 	}
 });
-
-
-
-
-
-
-
 
 
 
@@ -348,4 +353,31 @@ $(document).on("click", ".cancelBtn", function(){
 /*
 Testing
 */
+
+
+
+function setList(){
+	Pressure.set('.item', {
+		start: function(event){
+
+			},
+		end: function(){
+
+			},
+		startDeepPress: function(event){
+		 $(this).css("background-color", "orange")
+			},
+		endDeepPress: function(){
+			removeRow = $(this).parent();
+			removeID  = ($(this).parent().attr('data-id'));
+		pressHold();
+			},
+		change: function(force, event){
+			},
+		unsupported: function(){
+		}
+	});
+}
+
+
 
