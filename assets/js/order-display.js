@@ -95,7 +95,12 @@ $(document).on("click", ".closeBtn", function() {
 
   });
 
-  $("#"+ ticket).remove();
+ 
+ $( "#"+ ticket).hide( "slow", function() {
+    
+    $("#"+ ticket).remove();
+ });
+  
 
   for (var i=0;i<orders.length;i++){
     if (orders[i].orderKey === ticket){
