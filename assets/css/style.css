@@ -9,12 +9,12 @@
 
 	}
 
-	.container-fluid {
+	/*.container-fluid {
 		padding: 10px;
-	}
+	}*/
 
-	.danger {
-		color: #e4513f;
+	.btn-warning {
+		background-color: #e4513f;
 	}
 
 /*NAVIGATION*/
