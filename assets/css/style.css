@@ -9,6 +9,101 @@ body {
 		/*min-height: 50%;*/
 	}
 
+/*NAVIGATION*/
+
+.navbar-default {
+	height: 75px;
+}
+
+/*logo*/
+.navbar-brand {
+	padding: 9px 15px 0px 15px;
+}
+
+/*links*/
+.navbar-nav {
+    margin: 0px -15px;
+    float:right;
+}
+
+.navbar-collapse {
+	border-top:none;
+}
+
+.navbar-nav>li>a {
+	width: 82px;
+	margin: 0 auto;
+	padding-top: 0px;
+	text-align: center;
+	font-size: 16px;
+}
+
+.navbar-default .navbar-nav>li>a:hover {
+    color: #e4513f;
+}
+
+/*hamburger*/
+
+
+.navbar-header button.navbar-toggle .icon-bar  {
+	background-color: #e4513f;
+    width: 32px;
+    height: 5px;
+}
+.navbar-default .navbar-toggle:focus {
+	background-color: white;
+}
+
+.navbar-default .navbar-toggle {
+	border: none;
+	margin-top: 16px;
+}
+
+.navLinkWrapper {
+	background-color: #f8f8f8;
+}
+
+.brandTitle {
+	display: inline-block;
+}
+
+
+/*FOOTER */
+
+footer {
+	/*position: absolute;
+    bottom: 0;*/
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+   	background-color: #f8f8f8;
+    border: 1px solid #e7e7e7;
+}
+/*INDEX LANDING PAGE STYLE*/
+
+
+.jumbotron {
+	background-color: #ffffff;
+	padding-top: 0px;
+}
+
+.slogan {
+	margin-bottom: 6rem;
+	margin-top:4rem;
+}
+
+.caption {
+	padding-top: 2rem;
+}
+
+.heroImg {
+	width: 80%;
+	margin: 0 10%;
+}
+
+.heroItem {
+	min-height: 500px;
+}
 /*ORDER-DISPLAY*/
 
 	/*.tickets{
@@ -72,46 +167,87 @@ body {
 		display: none;
 	}
 
+/*SERVER PAGE*/
 
-/*LANDING PAGE STYLE*/
-
-
-.jumbotron {
-	background-color: #ffffff;
-	padding-top: 0px;
+img.menuBtn {
+	width: 10%;
+	margin: 0 45%;
 }
 
-h2.jumbotron {
-	margin-bottom: 6rem;
+/*MEDIA QUERIES*/
+/* Extra Small Devices, Phones */ 
+@media only screen and (min-width : 480px) {
+	body {
+	background-color: pink;
+	}
+
+	.heroImg {
+		/*width: 40%;
+		margin: 0 30%;*/
+		display: inline-block;
+	    float: left;
+	    margin: 54px 10px 0px 0px;
+	    width: 30%;
+	}
+
+	.heroItem {
+		min-height: 0px;
+	}
+
+
+	
 }
 
-.caption {
-	padding-top: 2rem;
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+	body {
+	background-color: aqua;
+	}
+	
+	.heroImg {
+		width: 70%;
+		margin: 0 15%;
+		display: block;
+	    float: none;
+	}
+
+	.heroItem {
+		min-height: 500px;
+	}
+
+	.navLinkWrapper {
+		background-color: transparent;
+	}
+
+	
 }
 
-/*NAVIGATION*/
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+	body {
+	background-color: yellow;
+	}
 
-.navbar-brand {
-	padding: 0px 15px;
+	.heroImg {
+		width: 80%;
+		margin: 0 10%;
+	}
+	
+	img.menuBtn {
+	width: 60%;
+	margin: 0 20%;
+}
 }
 
-.nav>li>a {
-	float:right;
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+	
+	body {
+	background-color: white;
+	}
+
+	img.menuBtn {
+	width: 50%;
+	margin: 0 25%;
+
 }
-
-.navbar-default {
-	height: 75px;
-}
-
-
-/*HAMBURGER*/
-.navbar-header button.navbar-toggle .icon-bar  {
-	background-color: #e4513f;
-    width: 32px;
-    height: 5px;
-}
-
-.navbar-default .navbar-toggle {
-	border: none;
-}
-
