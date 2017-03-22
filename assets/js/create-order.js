@@ -213,7 +213,7 @@ $(document).on('click', '#submitOrder', function() {
 	        order: tempOrder,
 	        server: server,
 	        status: "active",
-	        dateAdded: firebase.database.ServerValue.TIMESTAMP
+	        timeAdded: firebase.database.ServerValue.TIMESTAMP
 	});
 
 	menuBtnCnt = 0;
