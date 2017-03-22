@@ -81,7 +81,7 @@ function renderTable(){
 
 	for (var i=0; i<menuBtnCnt; i++){
 		if (order.hasOwnProperty([i])){
-			// order[i].id not sure why this was here
+			
 		$('#menu-item > tbody:last-child').append(
             '<tr data-id='+ order[i].id +'>'
             +'<td class="item">'+order[i].name+'</td>'
@@ -163,9 +163,24 @@ function setList(){
 /*
 Start 
 */
+$( document ).ready(function() {
+	$("#setServer").hide();
+});
 
+$("#setServer").hide();
 get.servers();
 get.menu();
+
+
+var interval = setInterval(function(){
+  if ($('#server > option').length > 1){
+  	$("#setServer").show();
+  	clearInterval(interval);
+      }
+
+}, 500);
+
+
 
 
 //window.onbeforeunload = function() {
@@ -186,9 +201,14 @@ $(document).on('click', '#setServer', function() {
 		server = $('#server').val();
 		
 		//hide current visible window
-		$('.serverSelection').remove();
-		$('.menuItems').show();
-		$('.currentOrder').show();
+		
+		$( ".serverSelection").fadeOut( 300, function() {
+    		
+	    	$('.serverSelection').remove();
+			$('.menuItems, .currentOrder').slideDown("slow");
+			
+ 		});
+	
 	}
 	
 	else{
@@ -346,38 +366,8 @@ $(document).on("click", ".cancelBtn", function(){
 
 
 
-
-
-
-
 /*
 Testing
 */
-
-
-
-function setList(){
-	Pressure.set('.item', {
-		start: function(event){
-
-			},
-		end: function(){
-
-			},
-		startDeepPress: function(event){
-		 $(this).css("background-color", "orange")
-			},
-		endDeepPress: function(){
-			removeRow = $(this).parent();
-			removeID  = ($(this).parent().attr('data-id'));
-		pressHold();
-			},
-		change: function(force, event){
-			},
-		unsupported: function(){
-		}
-	});
-}
-
 
 
