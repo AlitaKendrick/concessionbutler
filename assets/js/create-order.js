@@ -63,7 +63,7 @@ var get = {
 
 		    	var div = $('<div >',{
   				 id: menuItems[i].name,
-  				 class: 'menuBtns col-md-2',
+  				 class: 'menuBtns col-xs-4 col-sm-4 col-md-2 col-lg-2',
   				 html: '<div class="price">' + "$" + menuItems[i].price + '</div>'
 				});
 
