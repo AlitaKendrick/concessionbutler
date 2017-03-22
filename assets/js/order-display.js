@@ -14,7 +14,16 @@ var isLoaded = false;
 var orders = [];
 var temp = [];
 var onOrder;
+var played = false;
 
+setInterval(function(){
+  if ($('.oneTicket').length){
+    $('#loader').fadeOut(250);
+    isLoaded = true
+    
+  }
+
+}, 5000);
 
 database.ref("orders").child(moment().format("M[-]D[-]YY")).orderByChild("status").equalTo("active").on("child_added", function(snapshot) {
 
@@ -25,9 +34,10 @@ database.ref("orders").child(moment().format("M[-]D[-]YY")).orderByChild("status
 
  
 
-  if (isLoaded == true ){
+  if (isLoaded == true){
     
     audio.play();
+    played = true;
  
   }
 
@@ -71,7 +81,7 @@ function load(){
  
     temp = [];
     }
-    isLoaded = true
+    
   }
 }
 
@@ -85,7 +95,12 @@ $(document).on("click", ".closeBtn", function() {
 
   });
 
-  $("#"+ ticket).remove();
+ 
+ $( "#"+ ticket).hide( "slow", function() {
+    
+    $("#"+ ticket).remove();
+ });
+  
 
   for (var i=0;i<orders.length;i++){
     if (orders[i].orderKey === ticket){
