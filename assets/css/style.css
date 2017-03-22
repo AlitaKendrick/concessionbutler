@@ -204,10 +204,7 @@ footer {
 /*SERVER PAGE*/
 
 
-img.menuBtn {
-	width: 10%;
-	margin: 0 45%;
-}
+
 
 
 /*calculator formatting*/
@@ -220,7 +217,10 @@ img.menuBtn {
 	object-position: center;
 }
 
-
+img.menuBtn {
+	width: 60%;
+	margin: 0 20%;
+}
 
 /*MEDIA QUERIES*/
 /* Extra Small Devices, Phones */ 
@@ -243,7 +243,10 @@ img.menuBtn {
 		min-height: 0px;
 	}
 
-
+	img.menuBtn {
+	width: 50%;
+	margin: 0 25%;
+	}
 	
 }
 
@@ -268,7 +271,10 @@ img.menuBtn {
 		background-color: transparent;
 	}
 
-	
+	img.menuBtn {
+	width: 60%;
+	margin: 0 20%;
+	}
 }
 
 /* Medium Devices, Desktops */
