@@ -312,19 +312,11 @@ $(document).on("click", ".cancelBtn", function(){
 
      function showTotal() {
 
-// Use parseInt to convert our string representation of numbers into actual integers
-// firstNumber = parseInt(firstNumber);
-// result = parseInt(result);
+	// Use parseInt to convert our string representation of numbers into actual integers
+	//Calculate the results on Click
        firstNumber = parseFloat(firstNumber);
 
-// Then run the operation and set the HTML of the result of that operation
-       // if (operator === "plus") {
-       //   totalMoneyDueForOrder += firstNumber;
-       // }
-
-       if (operator === "minus") {
-         totalMoneyDueForOrder -= firstNumber;
-       }
+       totalMoneyDueForOrder -= firstNumber;
 
        $("#result").html("$" + totalMoneyDueForOrder);
        firstNumber= '';
