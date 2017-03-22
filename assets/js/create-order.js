@@ -64,7 +64,7 @@ var get = {
 		    	var div = $('<div >',{
   				 id: menuItems[i].name,
   				 class: 'menuBtns col-md-2',
-  				 html: '<center><strong>$ ' + menuItems[i].price + '</strong></center>'
+  				 html: '<div class="price">' + "$" + menuItems[i].price + '</div>'
 				});
 
 				image.appendTo(div);
