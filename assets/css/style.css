@@ -6,8 +6,33 @@
 	}
 
 	body {
-
+		font-size: 16px;
 	}
+
+	h1 {
+		font-size: /*2em;*/ 32px;
+	}
+
+	h2 {
+		font-size: /*1.5em;*/ 24px;
+	}
+
+	h3 {
+		font-size: /*1.125em;*/ 18px;
+	}
+
+	h4 {
+		font-size: /*1em;*/ 16px;
+	}
+
+	p {
+		font-size: /*1em;*/ 16px;
+	}
+
+	a {
+		font-size: /*1em;*/ 16px;
+	}
+
 
 	/*.container-fluid {
 		padding: 10px;
@@ -73,7 +98,10 @@
 	.brandTitle {
 		display: none;
 	}
-	
+
+/*NAVIGATION*/
+
+ 
 
 
 /*FOOTER */
@@ -93,6 +121,10 @@
 	.jumbotron {
 		background-color: #ffffff;
 		padding-top: 0px;
+	}
+
+	.jumbotron p{
+		font-size: 16px;
 	}
 
 	.slogan {
@@ -124,7 +156,11 @@
 		width:70%;
 		margin:0 15%;
 	}
-
+	
+	#server, #setServer {
+		font-size: 16px;
+		font-family: inherit;
+	}
 	.currentOrder {
 		display: none;
 	}
@@ -156,6 +192,10 @@
 
 	.closeBtn {
 		margin-bottom:10px;
+	}
+
+	.closeBtn, .btn-success {
+		font-size: 16px;
 	}
 
 
@@ -231,9 +271,8 @@
 		}
 		
 		.heroImg {
-			width: 70%;
-			margin: 0 15%;
-			display: block;
+			width: 80%;
+			margin: 0 10%;
 		    float: none;
 		}
 
