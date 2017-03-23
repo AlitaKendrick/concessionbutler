@@ -13,18 +13,18 @@
 
 	}
 
-	.orderBody {
+	/*.orderBody {
 		background-color: #FFDC00;
 	}
 
 	.serverBody {
 		background-color: #0074D9;
 		
-	}
+	}*/
 
-	.serverBody h1, .serverBody label {
+	/*.serverBody h1, .serverBody label {
 		color: white;
-	}
+	}*/
 
 	.oneTicket {
 		background-color: white;
@@ -41,6 +41,12 @@
 		font-size: 1.5em; /*24px;*/
 		font-family: 'Montserrat', sans-serif;
 		font-weight: 400;
+	}
+
+	.brandTitle {
+		color: white;
+		font-weight: 300;
+		font-size: 2em;
 	}
 
 	h3 {
@@ -171,7 +177,7 @@
 	}
 	.navbar-nav>li>a {
 	  padding-top: 10px;
-	  padding-bottom: 20px;
+	  padding-bottom: 0px;
 	  display: block;
 	  text-align: right;
 	}
@@ -189,7 +195,7 @@
 .scallop {
   position:relative;
   background: #e4513f;
-  /*padding:50px;*/
+  padding:0px;
 }
 
 .scallop:after { 
@@ -199,7 +205,6 @@
   width: 100%;
   content:" ";
   background: 
-  /*radial-gradient(circle at 50% 0%, #e4513f 25%, white 26%, white 40%);*/
   radial-gradient(circle at 50% 0%, #e4513f 25%, white 26%, white 40%);
   background-color: #e4513f;
   background-size:50px 100px;
@@ -208,16 +213,18 @@
   z-index: 1;
 }
 
+
 /*FOOTER */
 
 	footer {
-		/*position: absolute;
-	    bottom: 0;*/
+		position: absolute;
+	    bottom: -140px;
 	    width: 100%;
 	    height: 60px;
 	    line-height: 60px;
-	   	background-color: #f8f8f8;
-	    border: 1px solid #e7e7e7;
+	   	background-color: #e4513f;
+	    border-top: 1px solid #e7e7e7;
+	    color: #ffffff;
 	}
 
 /*INDEX LANDING PAGE STYLE*/
@@ -225,6 +232,8 @@
 	.jumbotron {
 		background-color: #ffffff;
 		padding-top: 60px;
+		padding-bottom: 0px;
+		margin-bottom: 0px;
 	}
 
 	.jumbotron p{
@@ -279,6 +288,7 @@
 
 	.menuItems {
 		display: none;
+		margin-top: 48px;
 	}
 
 
@@ -357,6 +367,11 @@
 	.price {
 		text-align: center;
 		font-size: 24px;
+		/*border-radius: 50px;
+	    width: 50px;
+	    background-color: #fff59d;*/
+	    /* padding-top: 10px; */
+	    padding: 10px;
 	}
 
 	.cancel, .submitOrder {
