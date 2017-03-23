@@ -7,22 +7,50 @@
 
 	body {
 		font-size: 16px;
+		font-family: 'Open Sans', sans-serif;
+
 	}
 
-	h1 {
-		font-size: 2em; /*32px;*/
+	.orderBody {
+		background-color: #FFDC00;
 	}
 
+	.serverBody {
+		background-color: #0074D9;
+		
+	}
+
+	.serverBody h1, .serverBody label {
+		color: white;
+	}
+
+	.oneTicket {
+		background-color: white;
+	}
+
+	h1, .activeOrder h1, .inactiveOrder h1, .serverSelection h1 {
+		font-size: 3em; /*32px;*/
+		font-family: 'Montserrat', sans-serif;
+		font-weight: 400;
+	}
+
+	
 	h2 {
 		font-size: 1.5em; /*24px;*/
+		font-family: 'Montserrat', sans-serif;
+		font-weight: 400;
 	}
 
 	h3 {
 		font-size: 1.125em; /*18px;*/
+		font-family: 'Montserrat', sans-serif;
+		font-weight: 400;
 	}
 
 	h4 {
 		font-size: 1em; /*16px;*/
+		font-family: 'Montserrat', sans-serif;
+		font-weight: 400;
 	}
 
 	p {
@@ -31,6 +59,8 @@
 
 	a {
 		font-size: 1em; /*16px;*/
+		font-family: 'Montserrat', sans-serif;
+		font-weight: 300;
 	}
 
 
@@ -134,7 +164,7 @@
 	}
 	.navbar-nav>li>a {
 	  padding-top: 10px;
-	  padding-bottom: 10px;
+	  padding-bottom: 20px;
 	  display: block;
 	  text-align: right;
 	}
@@ -171,7 +201,6 @@
 
 	.slogan {
 		margin-bottom: 6rem;
-		margin-top:4rem;
 	}
 
 	.caption {
@@ -197,6 +226,15 @@
 		margin: auto;*/
 		width:70%;
 		margin:0 15%;
+
+	}
+
+	.serverSelection, .activeOrder {
+		padding-top: 52px;
+	}
+
+	.activeOrder, .serverSelection, .inactiveOrder {
+		text-align: center;
 	}
 	
 	#server, #setServer {
@@ -282,9 +320,9 @@
 	/* Extra Small Devices, Phones */ 
 	@media only screen and (min-width : 480px) {
 		
-		body {
+		/*body {
 		background-color: pink;
-		}
+		}*/
 
 		.heroImg {
 			/*width: 40%;
@@ -304,7 +342,7 @@
 		margin: 0 25%;
 		}
 
-		h3.brandTitle {
+		h2.brandTitle {
 			display: inline-block;
 		}
 		
@@ -312,9 +350,9 @@
 
 	/* Small Devices, Tablets */
 	@media only screen and (min-width : 768px) {
-		body {
+		/*body {
 		background-color: aqua;
-		}
+		}*/
 		
 		.heroImg {
 			width: 80%;
@@ -344,9 +382,9 @@
 
 	/* Medium Devices, Desktops */
 	@media only screen and (min-width : 992px) {
-		body {
+		/*body {
 		background-color: yellow;
-		}
+		}*/
 
 		.heroImg {
 			width: 80%;
@@ -359,8 +397,8 @@
 		}
 
 		.serverSelection {
-		width:70%;
-		margin:0 15%;
+		width:86%;
+		margin:0 6%;
 		}
 
 	}	
@@ -368,9 +406,9 @@
 	/* Large Devices, Wide Screens */
 	@media only screen and (min-width : 1200px) {
 		
-		body {
+		/*body {
 		background-color: green;
-		}
+		}*/
 
 		img.menuBtn {
 		width: 50%;
