@@ -23,9 +23,9 @@ setInterval(function(){
 
 function checkIfOrders(){
   if ($('.oneTicket').length){
-    $( ".inactiveOrder").fadeOut( 300, function() {
+    $( ".inactiveOrder").fadeOut( 150, function() {
         
-       $(".activeOrder").fadeIn(300);
+       $(".activeOrder").fadeIn(150);
       
     });
     isLoaded = true
@@ -33,9 +33,9 @@ function checkIfOrders(){
   }
   else{
     
-    $( ".activeOrder").fadeOut( 300, function() {
+    $( ".activeOrder").fadeOut( 150, function() {
         
-       $(".inactiveOrder").fadeIn(300);
+       $(".inactiveOrder").fadeIn(150);
       
     });
 
