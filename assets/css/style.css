@@ -284,12 +284,28 @@
 	}
 	.currentOrder {
 		display: none;
+		margin-top: 24px;
 	}
 
 	.menuItems {
 		display: none;
 		margin-top: 48px;
 	}
+
+	#menu-item {
+		width: 50%;
+    	margin: 20px 25%;
+    	border: 3px solid darkslategrey;
+    	border-radius: 10px;
+		}
+
+	th {
+		background-color: lightgoldenrodyellow;
+	}
+
+
+
+
 
 
 	.oneTicketList {
