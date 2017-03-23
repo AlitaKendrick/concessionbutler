@@ -1,3 +1,5 @@
+
+
 /*GENERAL STYLE*/
 
 	.borderbox {
@@ -7,22 +9,50 @@
 
 	body {
 		font-size: 16px;
+		font-family: 'Open Sans', sans-serif;
+
 	}
 
-	h1 {
-		font-size: 2em; /*32px;*/
+	.orderBody {
+		background-color: #FFDC00;
 	}
 
+	.serverBody {
+		background-color: #0074D9;
+		
+	}
+
+	.serverBody h1, .serverBody label {
+		color: white;
+	}
+
+	.oneTicket {
+		background-color: white;
+	}
+
+	h1, .activeOrder h1, .inactiveOrder h1, .serverSelection h1 {
+		font-size: 3em; /*32px;*/
+		font-family: 'Montserrat', sans-serif;
+		font-weight: 400;
+	}
+
+	
 	h2 {
 		font-size: 1.5em; /*24px;*/
+		font-family: 'Montserrat', sans-serif;
+		font-weight: 400;
 	}
 
 	h3 {
 		font-size: 1.125em; /*18px;*/
+		font-family: 'Montserrat', sans-serif;
+		font-weight: 400;
 	}
 
 	h4 {
 		font-size: 1em; /*16px;*/
+		font-family: 'Montserrat', sans-serif;
+		font-weight: 400;
 	}
 
 	p {
@@ -31,6 +61,8 @@
 
 	a {
 		font-size: 1em; /*16px;*/
+		font-family: 'Montserrat', sans-serif;
+		font-weight: 300;
 	}
 
 
@@ -75,15 +107,20 @@
 	    color: #e4513f;
 	}
 
+	.navbar-header .navbar-default .navbar-toggle:focus {
+		background-color: red;
+	} 
+
+
 	/*hamburger*/
 
 	.navbar-header button.navbar-toggle .icon-bar  {
-		background-color: #e4513f;
+		background-color: #ffffff;
 	    width: 32px;
 	    height: 5px;
 	}
-	.navbar-default .navbar-toggle:focus {
-		background-color: white;
+	.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover  {
+		background-color: #e4513f;
 	}
 
 	.navbar-default .navbar-toggle {
@@ -92,7 +129,7 @@
 	}
 
 	.navLinkWrapper {
-		background-color: #f8f8f8;
+		background-color: transparent;
 		position:relative;
 		z-index: 1;
 	}
@@ -125,7 +162,7 @@
 	}
 	.navbar-nav {
 	  float: none!important;
-	  margin-top: 7.5px;
+	  margin-top: 47px;
 	}
 	.navbar-nav>li {
 	  float: none;
@@ -134,7 +171,7 @@
 	}
 	.navbar-nav>li>a {
 	  padding-top: 10px;
-	  padding-bottom: 10px;
+	  padding-bottom: 20px;
 	  display: block;
 	  text-align: right;
 	}
@@ -143,8 +180,33 @@
 	}
 
 	.navbar-default .navbar-collapse, .navbar-default .navbar-form {
-		border:none;
+		border-top: 1px solid #e4513f;
 	}
+
+/*SCALLOP BORDER*/
+
+
+.scallop {
+  position:relative;
+  background: #e4513f;
+  /*padding:50px;*/
+}
+
+.scallop:after { 
+  position:absolute;
+  bottom: -50px;
+  left: 0px;
+  width: 100%;
+  content:" ";
+  background: 
+  /*radial-gradient(circle at 50% 0%, #e4513f 25%, white 26%, white 40%);*/
+  radial-gradient(circle at 50% 0%, #e4513f 25%, white 26%, white 40%);
+  background-color: #e4513f;
+  background-size:50px 100px;
+  height:50px;
+  background-repeat: repeat-x;
+  z-index: 1;
+}
 
 /*FOOTER */
 
@@ -162,7 +224,7 @@
 
 	.jumbotron {
 		background-color: #ffffff;
-		padding-top: 0px;
+		padding-top: 60px;
 	}
 
 	.jumbotron p{
@@ -171,7 +233,6 @@
 
 	.slogan {
 		margin-bottom: 6rem;
-		margin-top:4rem;
 	}
 
 	.caption {
@@ -197,6 +258,15 @@
 		margin: auto;*/
 		width:70%;
 		margin:0 15%;
+
+	}
+
+	.serverSelection, .activeOrder {
+		padding-top: 52px;
+	}
+
+	.activeOrder, .serverSelection, .inactiveOrder {
+		text-align: center;
 	}
 	
 	#server, #setServer {
@@ -299,9 +369,9 @@
 	/* Extra Small Devices, Phones */ 
 	@media only screen and (min-width : 480px) {
 		
-		body {
+		/*body {
 		background-color: pink;
-		}
+		}*/
 
 		.heroImg {
 			/*width: 40%;
@@ -321,7 +391,7 @@
 		margin: 0 25%;
 		}
 
-		h3.brandTitle {
+		h2.brandTitle {
 			display: inline-block;
 		}
 		
@@ -329,9 +399,9 @@
 
 	/* Small Devices, Tablets */
 	@media only screen and (min-width : 768px) {
-		body {
+		/*body {
 		background-color: aqua;
-		}
+		}*/
 		
 		.heroImg {
 			width: 80%;
@@ -343,9 +413,9 @@
 			min-height: 500px;
 		}
 
-		.navLinkWrapper {
+		/*.navLinkWrapper {
 			background-color: #f8f8f8;
-		}
+		}*/
 
 		img.menuBtn {
 		width: 60%;
@@ -361,9 +431,9 @@
 
 	/* Medium Devices, Desktops */
 	@media only screen and (min-width : 992px) {
-		body {
+		/*body {
 		background-color: yellow;
-		}
+		}*/
 
 		.heroImg {
 			width: 80%;
@@ -376,8 +446,8 @@
 		}
 
 		.serverSelection {
-		width:70%;
-		margin:0 15%;
+		width:86%;
+		margin:0 6%;
 		}
 
 	}	
@@ -385,9 +455,9 @@
 	/* Large Devices, Wide Screens */
 	@media only screen and (min-width : 1200px) {
 		
-		body {
+		/*body {
 		background-color: green;
-		}
+		}*/
 
 		img.menuBtn {
 		width: 50%;
