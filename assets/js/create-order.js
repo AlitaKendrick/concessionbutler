@@ -205,7 +205,8 @@ $(document).on('click', '#setServer', function() {
 		$( ".serverSelection").fadeOut( 300, function() {
     		
 	    	$('.serverSelection').remove();
-			$('.menuItems, .currentOrder').slideDown("slow");
+	    	$(".serverBody").css("background-color", "white");
+			$('.menuItems, .currentOrder').fadeIn("slow");
 			
  		});
 	
