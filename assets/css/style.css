@@ -278,6 +278,14 @@
 		font-size: 16px;
 	}
 
+	.inactiveOrder{
+		display:none;
+	}
+
+	.activeOrder{
+		display:none;
+	}
+
 
 /*SERVER PAGE*/
 
@@ -297,7 +305,7 @@
 	}
 
 	.submitOrder {
-		float: right;
+		/*float: right;*/
 	}
 
 	.price {
@@ -312,6 +320,15 @@
 
 	.number {
 		object-position: center;
+	}
+
+	.price {
+		text-align: center;
+		font-size: 24px;
+	}
+
+	.cancel, .submitOrder {
+		display: inline;
 	}
 
 	

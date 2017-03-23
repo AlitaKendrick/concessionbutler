@@ -220,6 +220,8 @@ $(document).on('click', '#setServer', function() {
 //Submit order to Firebase
 $(document).on('click', '#submitOrder', function() {
 
+	$("#submitOrder").hide();
+
 	for (var i=0; i<order.length;i++){ //Removed extra data before sending order
 	
 		tempOrder.push({ 
@@ -240,6 +242,9 @@ $(document).on('click', '#submitOrder', function() {
 	order = []
 	tempOrder = []
 	clearOrder();
+
+	$("#result").html("$" + total);
+       $(firstNumber, operator).empty();
 
 });
 
@@ -273,6 +278,8 @@ $(document).on('click', '.menuBtn', function() {
 $(document).on('click', '.continueBtn', function() {
 	if (total > 0){
      $('#myModal').modal();
+     $("#result").html("$" + total); 
+       
    }
     
 });
@@ -307,8 +314,10 @@ $(document).on("click", ".cancelBtn", function(){
        firstNumber = "";
        operator = "";
        $(".number, .operator, #result").empty();
+       $("#result").html(total);
      };
-     // initializeCalculator();
+
+     initializeCalculator();
 
      function showTotal() {
 
@@ -318,11 +327,22 @@ $(document).on("click", ".cancelBtn", function(){
 
        totalMoneyDueForOrder -= firstNumber;
 
-       $("#result").html("$" + totalMoneyDueForOrder);
+       if (totalMoneyDueForOrder < 0) {
+
+       $(".amtRemain").html("You owe them $" + (Math.abs(totalMoneyDueForOrder)));
+       $(".modal-footer").html("<button type='button' id='submitOrder' class='btn btn-default btn-success' data-dismiss='modal'>Submit</button>");
+
+       } else {
+
+       $(".amtRemain").html("They owe you $" + (Math.abs(totalMoneyDueForOrder)));
        firstNumber= '';
        operator= '';
+       };
 
      };
+
+showTotal();
+
 
 // Add an on click listener to all elements that have the class "number"
      $(document).on("click", ".number", function() {
@@ -331,6 +351,7 @@ $(document).on("click", ".cancelBtn", function(){
          console.log(firstNumber);
 
          showTotal();
+
      });
 
 
@@ -348,7 +369,11 @@ $(document).on("click", ".cancelBtn", function(){
 // Call initializeCalculater so we can reset the state of our app
        // firstNumber= '';
        // operator= '';
-       $("#result").html("$" + total);
+
+       $(".amtRemain").html("They owe you $" + total);
+       firstNumber= '';
+       operator= '';
+
        $(firstNumber, operator).empty();
      });
 
