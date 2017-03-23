@@ -303,22 +303,19 @@ $(document).on("click", ".cancelBtn", function(){
 
 // Make our variables global to the runtime of our application
 // var totalNumber;
-     var firstNumber = $(".number").val;
-     var operator = $('.operator').val;
-     var isOperatorChosen;
-     var isCalculated;
+     var firstNumber = "";
 
 // Function initialized calculator
 // When the user hits clear, we guarantee a reset of the app
 
      function initializeCalculator() {
        firstNumber = "";
-       operator = "";
+
        $(".number, .operator, #result").empty();
        $("#result").html(total);
      };
 
-     initializeCalculator();
+     //initializeCalculator();
 
      function showTotal() {
 
