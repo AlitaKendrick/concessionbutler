@@ -17,21 +17,38 @@ var onOrder;
 var played = false;
 
 setInterval(function(){
+  checkIfOrders();
+
+}, 500);
+
+function checkIfOrders(){
   if ($('.oneTicket').length){
-    $('#loader').fadeOut(250);
+    $( ".inactiveOrder").fadeOut( 300, function() {
+        
+       $(".activeOrder").fadeIn(300);
+      
+    });
     isLoaded = true
     
   }
+  else{
+    
+    $( ".activeOrder").fadeOut( 300, function() {
+        
+       $(".inactiveOrder").fadeIn(300);
+      
+    });
 
-}, 5000);
-
+  }
+}
+checkIfOrders();
 database.ref("orders").child(moment().format("M[-]D[-]YY")).orderByChild("status").equalTo("active").on("child_added", function(snapshot) {
-
+$(".inactiveOrder").hide()
   orders.push({
     "orderKey": snapshot.key, "order": snapshot.val().order,
      "server": snapshot.val().server, "time": moment(snapshot.val().timeAdded)
   });
-
+  checkIfOrders();
  
 
   if (isLoaded == true){
@@ -42,6 +59,7 @@ database.ref("orders").child(moment().format("M[-]D[-]YY")).orderByChild("status
   }
 
   load();
+  
 
 });
 
@@ -99,6 +117,7 @@ $(document).on("click", ".closeBtn", function() {
  $( "#"+ ticket).hide( "slow", function() {
     
     $("#"+ ticket).remove();
+    checkIfOrders();
  });
   
 
@@ -108,4 +127,5 @@ $(document).on("click", ".closeBtn", function() {
     }
   }
 });
+checkIfOrders();
 
