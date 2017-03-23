@@ -10,27 +10,27 @@
 	}
 
 	h1 {
-		font-size: /*2em;*/ 32px;
+		font-size: 2em; /*32px;*/
 	}
 
 	h2 {
-		font-size: /*1.5em;*/ 24px;
+		font-size: 1.5em; /*24px;*/
 	}
 
 	h3 {
-		font-size: /*1.125em;*/ 18px;
+		font-size: 1.125em; /*18px;*/
 	}
 
 	h4 {
-		font-size: /*1em;*/ 16px;
+		font-size: 1em; /*16px;*/
 	}
 
 	p {
-		font-size: /*1em;*/ 16px;
+		font-size: 1em; /*16px;*/
 	}
 
 	a {
-		font-size: /*1em;*/ 16px;
+		font-size: 1em; /*16px;*/
 	}
 
 
@@ -63,13 +63,13 @@
 		border-top:none;
 	}
 
-	.navbar-nav>li>a {
+	/*.navbar-nav>li>a {
 		width: 82px;
 		margin: 0 auto;
 		padding-top: 0px;
 		text-align: center;
 		font-size: 16px;
-	}
+	}*/
 
 	.navbar-default .navbar-nav>li>a:hover {
 	    color: #e4513f;
@@ -93,16 +93,58 @@
 
 	.navLinkWrapper {
 		background-color: #f8f8f8;
+		position:relative;
+		z-index: 1;
 	}
 
 	.brandTitle {
 		display: none;
 	}
 
-/*NAVIGATION*/
+/*NAVIGATION PERMA HAMBURGER*/
 
- 
+	.navbar-header {
+	  float: none;
+	}
+	.navbar-left,.navbar-right {
+	  float: none !important;
+	}
+	.navbar-toggle {
+	  display: block;
+	}
+	.navbar-collapse {
+	  border-top: 1px solid transparent;
+	  box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+	}
+	.navbar-fixed-top {
+	  top: 0;
+	  border-width: 0 0 1px;
+	}
+	.navbar-collapse.collapse {
+	  display: none!important;
+	}
+	.navbar-nav {
+	  float: none!important;
+	  margin-top: 7.5px;
+	}
+	.navbar-nav>li {
+	  float: none;
+	  width: 98%;
+	  margin-right: 2%;
+	}
+	.navbar-nav>li>a {
+	  padding-top: 10px;
+	  padding-bottom: 10px;
+	  display: block;
+	  text-align: right;
+	}
+	.collapse.in{
+	  display:block !important;
+	}
 
+	.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+		border:none;
+	}
 
 /*FOOTER */
 
@@ -220,6 +262,10 @@
 		/*float: right;*/
 	}
 
+	.price {
+		text-align: center;
+	}
+
 	/*calculator formatting*/
 	#button-minus {
 		width: 100%;
@@ -290,7 +336,7 @@
 		}
 
 		.navLinkWrapper {
-			background-color: transparent;
+			background-color: #f8f8f8;
 		}
 
 		img.menuBtn {
@@ -339,6 +385,7 @@
 		width: 50%;
 		margin: 0 25%;
 		}
+
 		.serverSelection {
 		width:60%;
 		margin:0 20%;
