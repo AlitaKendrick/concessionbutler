@@ -217,7 +217,7 @@
 	}
 
 	.submitOrder {
-		float: right;
+		/*float: right;*/
 	}
 
 	/*calculator formatting*/
@@ -228,6 +228,15 @@
 
 	.number {
 		object-position: center;
+	}
+
+	.price {
+		text-align: center;
+		font-size: 24px;
+	}
+
+	.cancel, .submitOrder {
+		display: inline;
 	}
 
 	

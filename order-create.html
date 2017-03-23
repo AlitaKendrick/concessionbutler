@@ -130,14 +130,16 @@
 
 <!-- server options  -->
     <div class="row serverButtons">
-        <div class="col-md-6">
+      <div class="row mainPageBtns col-md-12">
+        <div class="cancel">
 <!-- cancel button to start over  -->
             <button type="button" class="btn btn-default btn-danger cancelBtn btn-lg" data-dismiss="alert" aria-label="Close"> Cancel </button>
         </div>
-
-        <div class="submitOrder col-md-6">
+        <div class="submitOrder">
 <!-- Trigger the modal with a button -->
             <button type="button" class="btn btn-default continueBtn btn-lg btn-success" data-toggle="modal">Continue</button>
+        </div>
+      </div>
 <!-- Modal -->
         <div id="myModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
@@ -204,7 +206,7 @@
     <div class="panel-heading">
     </div> <!-- closes panel head -->
     <div class="panel-body">
-        <h3 class="panel-title amtRemain">Amount Remaining: <span id="result"></span> </h3>
+        <h3 class="panel-title amtRemain">Total Amount Due: <span id="result"></span> </h3>
     </div> <!-- closes panel-body -->
     </div> <!-- closes panel def -->
     </div> <!-- closes col-md -->
