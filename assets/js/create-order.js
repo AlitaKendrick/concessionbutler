@@ -220,6 +220,8 @@ $(document).on('click', '#setServer', function() {
 //Submit order to Firebase
 $(document).on('click', '#submitOrder', function() {
 
+	$("#submitOrder").hide();
+
 	for (var i=0; i<order.length;i++){ //Removed extra data before sending order
 	
 		tempOrder.push({ 
@@ -325,15 +327,11 @@ $(document).on("click", ".cancelBtn", function(){
 
        totalMoneyDueForOrder -= firstNumber;
 
-       // $("#result").html("$" + totalMoneyDueForOrder);
-       // firstNumber= '';
-       // operator= '';
-
-
        if (totalMoneyDueForOrder < 0) {
-       	// console.log("nope!!");
 
-       $(".amtRemain").html("You owe them $" + (Math.abs(totalMoneyDueForOrder))) 
+       $(".amtRemain").html("You owe them $" + (Math.abs(totalMoneyDueForOrder)));
+       $(".modal-footer").html("<button type='button' id='submitOrder' class='btn btn-default btn-success' data-dismiss='modal'>Submit</button>");
+
        } else {
 
        $(".amtRemain").html("They owe you $" + (Math.abs(totalMoneyDueForOrder)));
