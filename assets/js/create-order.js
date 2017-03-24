@@ -280,6 +280,7 @@ $(document).on('click', '.continueBtn', function() {
 	if (total > 0){
      $('#myModal').modal();
      $("#result").html("$" + total); 
+     $(".amtRemain").html("They owe you $" + total);
        
    }
     
@@ -327,7 +328,7 @@ $(document).on("click", ".cancelBtn", function(){
 
        if (totalMoneyDueForOrder < 0) {
 
-       $(".amtRemain").html("You owe them $" + (Math.abs(totalMoneyDueForOrder)));
+       $(".amtRemain").html("You owe them $" + Math.abs(totalMoneyDueForOrder));
        $(".modal-footer").html("<button type='button' id='submitOrder' class='btn btn-default btn-success' data-dismiss='modal'>Submit</button>");
 
        } else {
@@ -352,21 +353,10 @@ showTotal();
 
      });
 
-
-// Add an on click listener to all elements that have the class "operator"
-     $(document).on("click", ".operator", function(){
-       operator = this.value;
-       console.log(operator);
-
-     });
-
      
 // CLEAR BUTTON Add an on click listener to all elements that have the class "clear"
      $(document).on("click", "#button-clear", function(){
-     	// console.log("click");
 // Call initializeCalculater so we can reset the state of our app
-       // firstNumber= '';
-       // operator= '';
 
        $(".amtRemain").html("They owe you $" + total);
        firstNumber= '';
