@@ -245,7 +245,7 @@ $(document).on('click', '#submitOrder', function() {
 	clearOrder();
 
 	$("#result").html("$" + total);
-       $(firstNumber, operator).empty();
+       $(firstNumber).empty();
 
 });
 
@@ -335,7 +335,7 @@ $(document).on("click", ".cancelBtn", function(){
 
        $(".amtRemain").html("They owe you $" + (Math.abs(totalMoneyDueForOrder)));
        firstNumber= '';
-       operator= '';
+
        };
 
      };
@@ -346,7 +346,7 @@ showTotal();
 // Add an on click listener to all elements that have the class "number"
      $(document).on("click", ".number", function() {
 
-         firstNumber += this.value;
+         firstNumber = this.value;
          console.log(firstNumber);
 
          showTotal();
@@ -360,9 +360,8 @@ showTotal();
 
        $(".amtRemain").html("They owe you $" + total);
        firstNumber= '';
-       operator= '';
 
-       $(firstNumber, operator).empty();
+       $(firstNumber, totalMoneyDueForOrder).empty();
      });
 
 
