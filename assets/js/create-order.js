@@ -103,7 +103,7 @@ function calculateTotal(){
 	
 	totalMoneyDueForOrder = total;
 
-	$('.moneyUnderline').html("$" + total);
+	$('.moneyUnderline').html("$" + total.toFixed(2));
 }
 
 function pressHold(){ //This function removes the item from order.array
@@ -221,32 +221,33 @@ $(document).on('click', '#setServer', function() {
 //Submit order to Firebase
 $(document).on('click', '#submitOrder', function() {
 
-	$("#submitOrder").hide();
-
-	for (var i=0; i<order.length;i++){ //Removed extra data before sending order
 	
-		tempOrder.push({ 
-		"name": order[i].name, "price": order[i].price
+		$("#submitOrder").hide();
+
+		for (var i=0; i<order.length;i++){ //Removed extra data before sending order
+		
+			tempOrder.push({ 
+			"name": order[i].name, "price": order[i].price
+			});
+
+		}
+		
+		database.ref().child('orders').child(moment().format("M[-]D[-]YY")).push({
+
+		        order: tempOrder,
+		        server: server,
+		        status: "active",
+		        timeAdded: firebase.database.ServerValue.TIMESTAMP
 		});
 
-	}
-	
-	database.ref().child('orders').child(moment().format("M[-]D[-]YY")).push({
+		menuBtnCnt = 0;
+		order = []
+		tempOrder = []
+		clearOrder();
 
-	        order: tempOrder,
-	        server: server,
-	        status: "active",
-	        timeAdded: firebase.database.ServerValue.TIMESTAMP
-	});
-
-	menuBtnCnt = 0;
-	order = []
-	tempOrder = []
-	clearOrder();
-
-	$("#result").html("$" + total);
-       $(firstNumber).empty();
-
+		$("#result").html("$" + total);
+	       $(firstNumber).empty();
+	   
 });
 
 //Menu item button click
@@ -279,9 +280,9 @@ $(document).on('click', '.menuBtn', function() {
 $(document).on('click', '.continueBtn', function() {
 	if (total > 0){
      $('#myModal').modal();
-     $("#result").html("$" + total); 
-     $(".amtRemain").html("They owe you $" + total);
-       
+     $("#result").html("$" + total.toFixed(2)); 
+     $(".amtRemain").html("They owe you $" + total.toFixed(2));
+       $('.moneyUnderline').html("$" + total.toFixed(2));
    }
     
 });
@@ -304,16 +305,16 @@ $(document).on("click", ".cancelBtn", function(){
 
 // Make our variables global to the runtime of our application
 // var totalNumber;
-     var firstNumber = "";
+     var firstNumber = 0;
 
 // Function initialized calculator
 // When the user hits clear, we guarantee a reset of the app
 
      function initializeCalculator() {
-       firstNumber = "";
+       firstNumber = 0;
 
-       $(".number, .operator, #result").empty();
-       $("#result").html(total);
+       // $(".number, .operator, #result").empty();
+       $("#result").html(total.toFixed(2));
      };
 
      //initializeCalculator();
@@ -322,19 +323,19 @@ $(document).on("click", ".cancelBtn", function(){
 
 	// Use parseInt to convert our string representation of numbers into actual integers
 	//Calculate the results on Click
-       firstNumber = parseFloat(firstNumber);
+       // firstNumber = parseFloat(firstNumber);
 
        totalMoneyDueForOrder -= firstNumber;
 
        if (totalMoneyDueForOrder < 0) {
 
-       $(".amtRemain").html("You owe them $" + Math.abs(totalMoneyDueForOrder));
-       $(".modal-footer").html("<button type='button' id='submitOrder' class='btn btn-default btn-success' data-dismiss='modal'>Submit</button>");
+       $(".amtRemain").html("You owe them $" + Math.abs(totalMoneyDueForOrder).toFixed(2));
+       $(".modal-footer").html("<button type='button' id='submitOrder' class='btn btn-default btn-success calcSubmit' data-dismiss='modal'>Submit</button>");
 
        } else {
 
-       $(".amtRemain").html("They owe you $" + (Math.abs(totalMoneyDueForOrder)));
-       firstNumber= '';
+       $(".amtRemain").html("They owe you $" + (Math.abs(totalMoneyDueForOrder)).toFixed(2));
+       firstNumber = 0;
 
        };
 
@@ -358,10 +359,13 @@ showTotal();
      $(document).on("click", "#button-clear", function(){
 // Call initializeCalculater so we can reset the state of our app
 
-       $(".amtRemain").html("They owe you $" + total);
-       firstNumber= '';
+       $(".amtRemain").html("They owe you $" + total.toFixed(2));
+       firstNumber= 0;
 
        $(firstNumber, totalMoneyDueForOrder).empty();
+       firstNumber=0
+       totalMoneyDueForOrder = total
+       $(".calcSubmit").remove();
      });
 
 
