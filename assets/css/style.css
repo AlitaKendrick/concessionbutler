@@ -6,7 +6,7 @@
 	}
 
 	h1, .activeOrder h1, .inactiveOrder h1, .serverSelection h1 {
-		font-size: 3em; /*32px;*/
+		font-size: 2em; /*32px;*/
 		font-family: 'Montserrat', sans-serif;
 		font-weight: 400;
 	}
@@ -48,7 +48,7 @@
 
 
 /*BUTTONS*/
-	.btn-warning {
+	.btn-danger {
 		background-color: #e4513f;
 	}
 
@@ -76,7 +76,9 @@
 	}
 
 	h2.brandTitle {
-			display: inline-block;
+		display: inline-block;
+		font-size: 1em;
+		padding-top: 6px;
 	}
 
 
@@ -189,13 +191,13 @@
 /*FOOTER */
 
 	footer {
-		/*position: absolute;*/
-	    bottom: 0;
+		position: absolute;
+	    bottom: -100px;
 	    width: 100%;
 	    height: 60px;
 	    line-height: 60px;
 	   	background-color: #e4513f;
-	    border-top: 1px solid #e7e7e7;
+	   /* border-top: 1px solid #e7e7e7;*/
 	    color: #ffffff;
 	}
 
@@ -237,8 +239,8 @@
 	.serverSelection {
 		height: 100vh;
 		text-align: center;
-		width:70%;
-		margin:0 15%;
+		width:91%;
+		margin:0 9%;
 	}
 
 	.serverSelection, .activeOrder, .inactiveOrder {
@@ -262,8 +264,8 @@
 	}
 
 	#menu-item {
-		width: 50%;
-    	margin: 20px 25%;
+		width: 96%;
+    	margin: 20px 4%;
     	border: 3px solid darkslategrey;
     	border-radius: 10px;
 	}
@@ -360,9 +362,22 @@
 	/* Extra Small Devices, Phones */ 
 	@media only screen and (min-width : 480px) {
 		
-		/*body {
+		body {
 		background-color: pink;
-		}*/
+		}
+		
+		h2.brandTitle {
+		font-size: 1.25em;
+		padding-top: 4px;
+		}
+
+		h1, .activeOrder h1, .inactiveOrder h1, .serverSelection h1 {
+			font-size: 2.25em;
+		}
+
+		.jumbotron {
+			padding-top: 30px;
+		}
 
 		.heroImg {
 		    margin: 54px 10px 0px 0px;
@@ -377,15 +392,32 @@
 			width: 50%;
 			margin: 0 25%;
 		}
-		
+
+		#menu-item {
+			width: 80%;
+	    	margin: 20px 10%;
+		}
+		.serverSelection {
+			width:70%;
+			margin:0 15%;
+		}
 	}
 
 	/* Small Devices, Tablets */
 	@media only screen and (min-width : 768px) {
-		/*body {
+		body {
 		background-color: aqua;
-		}*/
+		}
 		
+		h1, .activeOrder h1, .inactiveOrder h1, .serverSelection h1 {
+			font-size: 3em;
+		}
+		
+		h2.brandTitle {
+			font-size: 1.5em;
+			padding-top: 3px;
+		}
+
 		.heroImg {
 			width: 80%;
 			margin: 0 10%;
@@ -396,27 +428,33 @@
 			min-height: 500px;
 		}
 
-		/*.navLinkWrapper {
-			background-color: #f8f8f8;
-		}*/
-
 		img.menuBtn {
 			width: 60%;
 			margin: 0 20%;
 		}
 
+		#menu-item {
+			width: 50%;
+	    	margin: 20px 25%;
+		}
+
 		.serverSelection {
-			width:50%;
-			margin:0 25%;
+			width:51%;
+			margin:0 24%;
 		}
 
 	}
 
 	/* Medium Devices, Desktops */
 	@media only screen and (min-width : 992px) {
-		/*body {
+		body {
 		background-color: yellow;
-		}*/
+		}
+
+		h2.brandTitle {
+		display: inline-block;
+		font-size: 1.75em;
+	}
 
 		.heroImg {
 			width: 80%;
@@ -438,9 +476,9 @@
 	/* Large Devices, Wide Screens */
 	@media only screen and (min-width : 1200px) {
 		
-		/*body {
+		body {
 		background-color: green;
-		}*/
+		}
 
 		img.menuBtn {
 			width: 50%;
@@ -448,7 +486,7 @@
 		}
 
 		.serverSelection {
-			width:60%;
-			margin:0 20%;
+			width:64%;
+			margin:0 16%;
 		}
 	}
