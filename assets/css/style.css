@@ -259,7 +259,7 @@
 		font-family: inherit;
 	}
 
-	.currentOrder,  {
+	.currentOrder {
 		display: none;
 		margin-top: 24px;
 	}
