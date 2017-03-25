@@ -29,7 +29,7 @@ var get = {
 		getServers.on('value', function(snapshot) {
 			snapshot.forEach(function(childSnapshot) {
 			    var childData = childSnapshot.val();
-			    // console.log(childData);
+			    
 			    servers.push(childData);
 			});
 
@@ -46,12 +46,12 @@ var get = {
 		getMenu.on('value', function(snapshot) {
 			snapshot.forEach(function(childSnapshot) {
 			    var childData = childSnapshot.val();
-			    // console.log(childData);
+			    
 			    menuItems.push(childData);
 			});
 
 		    for ( var i=0; i<menuItems.length;i++){
-		    	// console.log(menuItems[i].name);
+		    	
 		    	
 		    	var image = $('<img />', { 
 				 src: menuItems[i].pic,
@@ -124,7 +124,7 @@ function pressHold(){ //This function removes the item from order.array
 			}
 		}
 	}
-	console.log("Error");
+	
 }
 
 function clearOrder(){
@@ -269,7 +269,6 @@ $(document).on('click', '.menuBtn', function() {
 
 	renderTable();
 
-	console.log(JSON.stringify(order));
 
 	
 
@@ -348,7 +347,6 @@ showTotal();
      $(document).on("click", ".number", function() {
 
          firstNumber = this.value;
-         console.log(firstNumber);
 
          showTotal();
 
