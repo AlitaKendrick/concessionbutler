@@ -72,9 +72,10 @@
 	}
 
 
-	/*.container-fluid {
-		padding: 10px;
-	}*/
+	.container-fluid {
+		padding-right: 40px;
+		padding-left: 40px;
+	}
 
 	.btn-warning {
 		background-color: #e4513f;
@@ -270,7 +271,7 @@
 
 	}
 
-	.serverSelection, .activeOrder {
+	.serverSelection, .activeOrder, .inactiveOrder {
 		padding-top: 52px;
 	}
 
@@ -279,7 +280,7 @@
 	}
 	
 	#server, #setServer {
-		font-size: 16px;
+		font-size: 18px;
 		font-family: inherit;
 	}
 	.currentOrder {
@@ -333,7 +334,7 @@
 	}
 
 	.closeBtn, .btn-success {
-		font-size: 16px;
+		font-size: 18px;
 	}
 
 	.inactiveOrder{
@@ -344,6 +345,14 @@
 		display:none;
 	}
 
+	.tickets {
+		margin-bottom: 50px;
+	}
+	
+	.closeBtn {
+		margin-left: 25%;
+		margin-radio: 25%;
+	}
 
 /*SERVER PAGE*/
 
@@ -355,7 +364,7 @@
 
 	/*buttons*/ 
 	.totalDue {
-		padding: 30px;
+		padding-left: 20px;
 	}
 
 	.serverButtons {
