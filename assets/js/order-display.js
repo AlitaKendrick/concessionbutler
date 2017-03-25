@@ -94,7 +94,7 @@ function load(){
         
         
         ticket.appendTo(".tickets");
-        $("#"+orders[i].orderKey).append('<button type="button" class="closeBtn btn btn-warning">Close</button>');
+        $("#"+orders[i].orderKey).append('<button type="button" class="closeBtn btn btn-danger">Close</button>');
 
  
     temp = [];
