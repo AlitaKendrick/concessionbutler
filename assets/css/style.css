@@ -196,7 +196,7 @@
 /*FOOTER */
 
 	footer {
-		position: absolute;
+		/*position: absolute;*/
 	    bottom: 0;
 	    width: 100%;
 	    height: 60px;
@@ -259,7 +259,7 @@
 		font-family: inherit;
 	}
 
-	.currentOrder,  {
+	.currentOrder {
 		display: none;
 		margin-top: 24px;
 	}
