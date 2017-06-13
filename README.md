@@ -2,7 +2,7 @@
 
 Web application to assist in taking food orders, calculation of the monetary transaction, and displaying orders to the cook. 
 
-## Tecnologies Used
+## Technologies Used
 
 - Bootstrap
 - jQuery
